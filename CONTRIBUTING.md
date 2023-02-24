@@ -1,7 +1,7 @@
 # Indicator Intelligence Contribution
 
 #### Open issue
-Open issue about your feature or bug in this [here](https://github.com/OsmanKandemir).
+Open issue about your feature or bug in this [here](https://github.com/OsmanKandemir/indicator-intelligence/issues).
 
 #### Clone this repository.
 ```
