@@ -6,16 +6,15 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 
 VERSION = '1.0.0'
 DESCRIPTION = 'Indicator Intelligence'
-LONG_DESCRIPTION = 'Indicator collects sensitive informations to threats (Hash,Domain,Email,Ipv4,Ipv6)'
 # Setting up
 setup(
     name="indicator-intelligence",
     version=VERSION,
     author="OsmanKandemir",
-    author_email="",
+    author_email="osmankandemir00@gmail.com",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
-    long_description=LONG_DESCRIPTION,
+    long_description=open("README.md").read(),,
     packages=find_packages(),
     install_requires=[
         "beautifulsoup4==4.11.2",
@@ -36,12 +35,10 @@ setup(
     
         "License :: OSI Approved :: MIT License",
         "Topic :: Software Development :: Build Tools",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3 :: Only",
         "Operating System :: OS Independent"
 

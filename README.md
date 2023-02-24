@@ -3,7 +3,7 @@
 
 ## Description
 
-----
+Indicator collects sensitive informations (Hash,Domain,Email,Ipv4,Ipv6) to threats. 
 
 ## Installation
 
