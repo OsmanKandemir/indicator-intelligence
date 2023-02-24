@@ -49,8 +49,6 @@ from indicator import Indicator
 Indicator(["http://google.com"])
 ```
 
-## Development and Contribution
-See; [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 
@@ -58,3 +56,6 @@ See; [CONTRIBUTING.md](CONTRIBUTING.md)
 Copyright (c) 2023 Osman Kandemir
 Licensed under the MIT License.
 ```
+
+## Development and Contribution
+See; [CONTRIBUTING.md](CONTRIBUTING.md)
