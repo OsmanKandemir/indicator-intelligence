@@ -4,7 +4,7 @@ import os
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
-VERSION = '0.0.1'
+VERSION = '1.0.0'
 DESCRIPTION = 'Indicator Intelligence'
 LONG_DESCRIPTION = 'Indicator Intelligence collects sensitive data informations to threats.(IPv4,IPv6,Email,Domain,Hash)'
 DEPENDENCIES = []
