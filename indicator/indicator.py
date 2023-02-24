@@ -15,8 +15,9 @@ import threading, queue
 #                    __/ |                                                __/ |                    
 #                   |___/                                                |___/                     
 
+PROXY_SERVERS = {'http': '14.207.97.87:8080'}
 
-PROXY_MODE = (True,False)
+PROXY_MODE = True
 
 #SocialMediaAccountFind Module
 
@@ -42,7 +43,6 @@ def Eliminate(value:str) -> bool:
 	return False
 
 def MultiProcessingTasks(urls:list) -> list:
-
 	queue = []
 	for i in urls:queue.append((i))
 	with Pool() as pool:
@@ -58,26 +58,31 @@ class LinkExtractor:
 	def Test(urls:str) -> list: 
 		extractor = URLExtract()
 		try:
-			grab = requests.get(urls)
-			soup = BeautifulSoup(grab.text, 'html.parser')
-			AllUrls = []
-			for link in soup.find_all("a"):
-				data = link.get('href')
-				if extractor.find_urls(data):
-					if not Eliminate(data):AllUrls.append(data)
-			Result = list(set(AllUrls))
-			return Result
+			headers = {'User-agent': 'Mozilla/5.0'}
+			grab = requests.get(urls,proxies=PROXY_SERVERS if PROXY_MODE == True else None,headers=headers,timeout=20)
+			if grab.status_code == 200:
+				soup = BeautifulSoup(grab.text, 'html.parser')
+				AllUrls = []
+				for link in soup.find_all("a"):
+					data = link.get('href')
+					if extractor.find_urls(data):
+						if not Eliminate(data):AllUrls.append(data)
+				Result = list(set(AllUrls))
+				return Result
+			else:pass
 		except:pass
 		
 	@classmethod
 	def Start(self,url:str,results_queue:queue.Queue):
 		Tst = []
-		res = self.Test(url)
-		res = list(set(res))
-		for i,z in zip(range(1,len(res)),res):
-			res = self.Test(z)
-			Tst.append({"url":z,"links":res})
-		results_queue.put(Tst)
+		try:
+			res = self.Test(url)
+			res = list(set(res))
+			for i,z in zip(range(1,len(res)),res):
+				res = self.Test(z)
+				Tst.append({"url":z,"links":res})
+			results_queue.put(Tst)
+		except:pass
 
 	def Run(self) -> list:
 		threads = []
@@ -115,6 +120,6 @@ def Indicator(urls):
 	print(LinkExtractor(urls,"Workspacename").Run())
 
 if __name__ == "__main__":
-	#Domains = ["http://coslat.com","http://bg-tek.net","http://osmankandemir.com"]
-	#print(LinkExtractor(Domains,"Workspacename").Run())
-	sys.exit()
+	Domains = ["http://bg-tek.net"]
+	print(LinkExtractor(Domains,"Workspacename").Run())
+	#sys.exit()
