@@ -1,0 +1,3 @@
+*.py text eol=lf charset=utf-8
+*.md text eol=lf charset=utf-8
+*.png binary
