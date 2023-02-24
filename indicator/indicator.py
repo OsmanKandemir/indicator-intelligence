@@ -1,11 +1,11 @@
-import requests
+import requests,sys
 from bs4 import BeautifulSoup
 from urlextract import URLExtract
 from multiprocessing import Pool
 import threading, queue
 #OK
 
-print("""
+
 #  _____      _   _             _               _____      _       _ _ _                           
 # |_   _|    | | (_)           | |             |_   _|    | |     | | (_)                          
 #   | | _ __ | |_ _  __ _  __ _| |_ ___  _ __    | | _ __ | |_ ___| | |_  __ _  ___ _ __   ___ ___ 
@@ -14,7 +14,7 @@ print("""
 #  \___/_| |_|\__|_|\__, |\__,_|\__\___/|_|     \___/_| |_|\__\___|_|_|_|\__, |\___|_| |_|\___\___|
 #                    __/ |                                                __/ |                    
 #                   |___/                                                |___/                     
-""")
+
 
 PROXY_MODE = (True,False)
 
@@ -33,6 +33,8 @@ SOCIAL_MEDIA_EXIST_OR_NOT_EXIST = [
 				"slideshare.com","flickr.com","github.com",
 				"pinterest.com","plus.google.com","meetup.com"
 				]
+
+
 
 def Eliminate(value:str) -> bool:
 	for i in SOCIAL_MEDIA_EXIST_OR_NOT_EXIST:
@@ -127,14 +129,16 @@ class LinkExtractor:
 	def workspacename(self) -> str:
 		return self.workspacename_
 	
-	@property
 	def __str__(self):
 		return f"LinkExtractor"
 
 	def __repr__(self):
 		return 'LinkExtractor(urls_=' + str(self.urls_) + ' ,workspacename_=' + self.workspacename_ + ')'
 
+def Indicator(urls):
+	print(LinkExtractor(urls,"Workspacename").Run())
 
 if __name__ == "__main__":
-	Domains = ["http://coslat.com","http://bg-tek.net","http://osmankandemir.com"]
-	print(LinkExtractor(Domains,"Workspacename").Run())
+	#Domains = ["http://coslat.com","http://bg-tek.net","http://osmankandemir.com"]
+	#print(LinkExtractor(Domains,"Workspacename").Run())
+	sys.exit()

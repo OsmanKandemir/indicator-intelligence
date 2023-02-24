@@ -6,13 +6,13 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 
 VERSION = '1.0.0'
 DESCRIPTION = 'Indicator Intelligence'
-LONG_DESCRIPTION = 'Indicator Intelligence collects sensitive data informations to threats.(IPv4,IPv6,Email,Domain,Hash)'
+LONG_DESCRIPTION = 'Indicator collects sensitive informations to threats (Hash,Domain,Email,Ipv4,Ipv6)'
 # Setting up
 setup(
     name="indicator-intelligence",
     version=VERSION,
     author="OsmanKandemir",
-    author_email="osmankandemir00@gmail.com",
+    author_email="",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
@@ -23,7 +23,6 @@ setup(
         "charset-normalizer==3.0.1",
         "filelock==3.9.0",
         "idna==3.4",
-        "indicator-intelligence==0.0.1",
         "platformdirs==3.0.0",
         "requests==2.28.2",
         "soupsieve==2.4",
@@ -32,12 +31,20 @@ setup(
         "urllib3==1.26.14"
     ],
     license="",
-    keywords=['python', 'threat', 'threat-intelligence', 'indigator'],
+    keywords=['python', 'threat', 'threat-intelligence','indicator'],
     classifiers=[
-        "Programming Language :: Python :: 3",
+    
         "License :: OSI Approved :: MIT License",
-        "Operating System :: Unix",
-        "Operating System :: MacOS :: MacOS X",
-        "Operating System :: Microsoft :: Windows",
-    ]
+        "Topic :: Software Development :: Build Tools",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3 :: Only",
+        "Operating System :: OS Independent"
+
+    ],
+    python_requires='>=3.7',
 )
