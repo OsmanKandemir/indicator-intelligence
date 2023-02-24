@@ -15,6 +15,8 @@
 
 Indicator collects sensitive informations (Hash,Domain,Email,Ipv4,Ipv6) to threats. 
 
+Fundamental method of logic is IOC.
+
 ## Installation
 
 ### From Source Code
@@ -52,11 +54,16 @@ Indicator(["http://google.com"])
 ```
 
 
-## License
+## Reference
 
-Copyright (c) 2023 Osman Kandemir \
-Licensed under the MIT License.
+- 
+- 
 
 ## Development and Contribution
 
 See; [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## License
+
+Copyright (c) 2023 Osman Kandemir \
+Licensed under the MIT License.
