@@ -7,19 +7,6 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 VERSION = '1.0.0'
 DESCRIPTION = 'Indicator Intelligence'
 LONG_DESCRIPTION = 'Indicator Intelligence collects sensitive data informations to threats.(IPv4,IPv6,Email,Domain,Hash)'
-DEPENDENCIES = []
-
-with open("{}/requirement.txt".format(HERE),"r") as REQ:
-    try:
-        for RE in REQ.readlines():
-            DEPENDENCIES.append(str(RE))
-        REQ.close()
-    except:
-        print("requirement.txt not exist.")
-    
-
-
-
 # Setting up
 setup(
     name="indicator-intelligence",
@@ -30,7 +17,20 @@ setup(
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
-    install_requires=DEPENDENCIES,
+    install_requires=[
+        "beautifulsoup4==4.11.2",
+        "certifi==2022.12.7",
+        "charset-normalizer==3.0.1",
+        "filelock==3.9.0",
+        "idna==3.4",
+        "indicator-intelligence==0.0.1",
+        "platformdirs==3.0.0",
+        "requests==2.28.2",
+        "soupsieve==2.4",
+        "uritools==4.0.1",
+        "urlextract==1.8.0",
+        "urllib3==1.26.14"
+    ],
     license="",
     keywords=['python', 'threat', 'threat-intelligence', 'indigator'],
     classifiers=[

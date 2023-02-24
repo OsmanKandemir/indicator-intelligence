@@ -135,8 +135,6 @@ class LinkExtractor:
 		return 'LinkExtractor(urls_=' + str(self.urls_) + ' ,workspacename_=' + self.workspacename_ + ')'
 
 
-
-
 if __name__ == "__main__":
 	Domains = ["http://coslat.com","http://bg-tek.net","http://osmankandemir.com"]
 	print(LinkExtractor(Domains,"Workspacename").Run())
