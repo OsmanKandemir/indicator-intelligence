@@ -14,7 +14,7 @@ setup(
     author_email="osmankandemir00@gmail.com",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
-    long_description=open("README.md").read(),,
+    long_description=open("README.md").read(),
     packages=find_packages(),
     install_requires=[
         "beautifulsoup4==4.11.2",
