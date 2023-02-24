@@ -25,9 +25,11 @@ pip install indicator-intelligence
 
 ## Usage
 
+```
 from indicator import Indicator
 
 Indicator(["http://google.com"])
+```
 
 ## Development and Contribution
 See; [CONTRIBUTING.md](CONTRIBUTING.md)
