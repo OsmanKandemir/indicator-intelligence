@@ -1,5 +1,5 @@
 
-<a href=".png"></a>
+<a href="img.png"></a>
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/smicallef/spiderfoot/master/LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.7+-green)](https://www.python.org)
