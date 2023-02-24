@@ -33,6 +33,14 @@ The script is [available on PyPI](https://pypi.org/project/indicator-intelligenc
 pip install indicator-intelligence
 ```
 
+### From Docker
+
+```
+docker build -t indicator .
+docker run indicator --domain http://google.com
+
+```
+
 ## Usage
 
 ```

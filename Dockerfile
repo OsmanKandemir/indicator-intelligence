@@ -1,10 +1,11 @@
-LABEL Maintainer="OsmanKandemir"
 FROM python:3.9
+LABEL Maintainer="OsmanKandemir"
 COPY . /app
 WORKDIR /app
-RUN pip install --no-cache-dir -r requirement.txt
-CMD ["python", "indicator/indicator_docker.py"]
+RUN /usr/local/bin/python -m pip install --upgrade pip
+RUN pip install -r requirement.txt
+ENTRYPOINT ["python", "indicator/indicator_docker.py"]
 
 
 #docker build -t indicator .
-#docker run indicator --domain google.com
+#docker run indicator --domain http://google.com

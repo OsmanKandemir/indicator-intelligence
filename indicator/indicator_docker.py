@@ -120,8 +120,8 @@ def STARTS():
 	parser = argparse.ArgumentParser()
 	parser.add_argument("--domain", help="Enter Domain")
 	args = parser.parse_args()
-	if args.name:
-		print(LinkExtractor([args.name],"Workspacename").Run())
+	if args.domain:
+		print(LinkExtractor([args.domain],"Workspacename").Run())
 	else:  
 		sys.exit()
 
