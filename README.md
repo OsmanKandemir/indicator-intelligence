@@ -35,6 +35,8 @@ pip install indicator-intelligence
 
 ### From Docker
 
+You can create and run a container in Docker.
+
 ```
 docker build -t indicator .
 docker run indicator --domain http://google.com
@@ -52,7 +54,7 @@ Indicator(["http://google.com"])
 
 ## License
 
-Copyright (c) 2023 Osman Kandemir
+Copyright (c) 2023 Osman Kandemir \
 Licensed under the MIT License.
 
 ## Development and Contribution
