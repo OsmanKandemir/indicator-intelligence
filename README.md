@@ -35,7 +35,7 @@ pip install indicator-intelligence
 
 ### From Docker
 
-You can create and run a container in Docker.
+You can run this application on a container after build a Dockerfile.
 
 ```
 docker build -t indicator .
