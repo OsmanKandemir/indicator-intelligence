@@ -4,7 +4,7 @@ import os
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 DESCRIPTION = 'Indicator Intelligence'
 # Setting up
 setup(

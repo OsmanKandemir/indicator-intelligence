@@ -1,3 +1,11 @@
+
+<a href=".png"></a>
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/smicallef/spiderfoot/master/LICENSE)
+[![Python Version](https://img.shields.io/badge/python-3.7+-green)](https://www.python.org)
+[![Docker](https://img.shields.io/badge/docker-build-important.svg?logo=Docker)](https://www.docker.com)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/OsmanKandemir/indicator-intelligence)
+
 # Indicator-Intelligence
 
 
