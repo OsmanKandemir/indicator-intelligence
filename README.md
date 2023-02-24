@@ -52,10 +52,9 @@ Indicator(["http://google.com"])
 
 ## License
 
-```
 Copyright (c) 2023 Osman Kandemir
 Licensed under the MIT License.
-```
 
 ## Development and Contribution
+
 See; [CONTRIBUTING.md](CONTRIBUTING.md)
