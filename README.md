@@ -36,6 +36,12 @@ The script is [available on PyPI](https://pypi.org/project/indicator-intelligenc
 ```
 pip install indicator-intelligence
 ```
+### From Poetry
+
+```
+pip install poetry
+poetry install
+```
 
 ### From Dockerfile
 
