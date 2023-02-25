@@ -9,7 +9,7 @@ class SearchInformationOnSourceCode:
 		self.workspacename_ = workspacename
 
 	def Code(self,url:str):
-		pass
+		...
 	
 	@property
 	def urls(self) -> list:
@@ -26,4 +26,4 @@ class SearchInformationOnSourceCode:
 		return 'SearchInformationOnSourceCode(urls_=' + str(self.urls_) + ' ,workspacename_=' + self.workspacename_ + ')'
 
 if __name__ == "__main__":
-    #sys.exit()
+    sys.exit()
