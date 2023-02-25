@@ -54,10 +54,10 @@ Indicator(["http://google.com"])
 ```
 
 
-## Reference
+## Resources
 
-- 
-- 
+- https://resources.infosecinstitute.com/topic/threat-hunting-for-file-hashes-as-an-ioc/
+- https://abnormalsecurity.com/glossary/indicators-of-compromise
 
 ## Development and Contribution
 
