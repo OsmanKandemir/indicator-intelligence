@@ -15,7 +15,7 @@
 
 Indicator collects sensitive informations (Hash,Domain,Email,Ipv4,Ipv6) to threats. 
 
-Fundamental method of logic is IOC.
+Fundamental method of logic is IOC. An IOC is the cyber-equivalent of evidence left at a crime scene. 
 
 ## Installation
 
