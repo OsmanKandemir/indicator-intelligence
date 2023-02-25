@@ -36,7 +36,7 @@ The script is [available on PyPI](https://pypi.org/project/indicator-intelligenc
 pip install indicator-intelligence
 ```
 
-### From Docker
+### From Dockerfile
 
 You can run this application on a container after build a Dockerfile.
 
