@@ -3,7 +3,7 @@ LABEL Maintainer="OsmanKandemir"
 COPY . /app
 WORKDIR /app
 RUN /usr/local/bin/python -m pip install --upgrade pip
-RUN pip install -r requirement.txt
+RUN pip --no-cache-dir install -r requirement.txt
 ENTRYPOINT ["python", "indicator/indicator_docker.py"]
 
 
