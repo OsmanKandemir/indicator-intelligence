@@ -44,8 +44,7 @@ class HashCalculator:
 
 
 def HASH(File):
-    return HashCalculator("indicator.py").run()
+    return HashCalculator(File).run()
 
 if __name__ == '__main__':
-    #print(HASH("indicator.py"))
     sys.exit()
