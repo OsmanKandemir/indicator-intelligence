@@ -72,8 +72,8 @@ Indicator(["http://google.com"])
 
 ## To-Do
 
-- Result compare structure with Django
-- Quick crawling optimization
+Result compare structure with Django \
+Quick crawling optimization
 
 ## Development and Contribution
 
