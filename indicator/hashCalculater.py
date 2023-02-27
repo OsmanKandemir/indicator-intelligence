@@ -17,10 +17,6 @@ class HashCalculator:
         self.md5.update(data)
         self.sha256.update(data)
         self.sha512.update(data)
-    
-    @staticmethod
-    def run1(gonder):
-        return gonder
 
     def run(self) -> list:
         try:

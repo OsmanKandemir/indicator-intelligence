@@ -15,7 +15,7 @@
 
 ## Description
 
-Indicator collects informations (Static Files) to detect threats. 
+Indicator collects informations (Static Files) to detect threats. Calculates hashes.
 
 Fundamental method of logic is IOC. An IOC is the cyber-equivalent of evidence left at a crime scene. 
 
