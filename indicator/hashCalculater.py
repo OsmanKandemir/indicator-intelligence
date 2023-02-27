@@ -2,8 +2,6 @@ import hashlib
 
 BUF_SIZE = 60000
 
-
-
 class HashCalculator:
 
     def __init__(self,Filename:str):

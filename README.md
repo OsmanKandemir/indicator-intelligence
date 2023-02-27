@@ -62,7 +62,7 @@ docker run indicator --domain http://google.com
 ## Usage
 
 Save the result after the first scan starts. 
-Save the second result after start second scan starts. Compare and analysis results.
+Save the second result after start second scan. Compare and analysis results.
 
 ```
 from indicator import Indicator
