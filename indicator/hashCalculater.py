@@ -1,4 +1,4 @@
-import hashlib,sys
+import hashlib
 
 BUF_SIZE = 60000
 
