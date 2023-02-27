@@ -40,7 +40,7 @@ class HashCalculator:
         return f"Hash Calculater"
         
     def __repr__(self):
-        return 'LinkExtractor(urls_=' + str(self.Filename_) + ')'
+        return 'HashCalculator(Filename_=' + str(self.Filename_) + ')'
 
 
 def HASH(File):
