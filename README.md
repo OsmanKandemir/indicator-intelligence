@@ -15,9 +15,15 @@
 
 ## Description
 
-Indicator collects sensitive informations (Hash,Domain,Email,Ipv4,Ipv6) to detect threats. 
+Indicator collects informations (Static Files) to detect threats. 
 
 Fundamental method of logic is IOC. An IOC is the cyber-equivalent of evidence left at a crime scene. 
+
+## To-Do
+
+Domain, Email, Ipv4, Ipv6 collect \
+Result compare structure with Django \
+Quick crawling optimization
 
 ## Installation
 
@@ -70,10 +76,6 @@ Indicator(["http://google.com"])
 - https://resources.infosecinstitute.com/topic/threat-hunting-for-file-hashes-as-an-ioc/
 - https://abnormalsecurity.com/glossary/indicators-of-compromise
 
-## To-Do
-
-Result compare structure with Django \
-Quick crawling optimization
 
 ## Development and Contribution
 
