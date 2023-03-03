@@ -15,7 +15,7 @@
 
 ## Description
 
-Indicator collects informations (Static Files, Domains) to detect threats. Calculates hashes to changes.
+Indicator collects informations (Static Files, Domains) to detect threats. Calculates hashes to detect changes.
 
 Fundamental logic method is similar to IOC.
 
