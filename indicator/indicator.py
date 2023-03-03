@@ -1,4 +1,4 @@
-import requests,sys
+import requests,sys,re,tldextract
 from bs4 import BeautifulSoup
 from urlextract import URLExtract
 from multiprocessing import Pool
@@ -15,9 +15,9 @@ import threading, queue
 #                    __/ |                                                __/ |                    
 #                   |___/                                                |___/                     
 
-PROXY_SERVERS = {'http': '14.207.97.87:8080'}
+PROXY_SERVERS = {}
 
-PROXY_MODE = True
+PROXY_MODE = False
 
 #SocialMediaAccountFind Module
 
@@ -31,9 +31,11 @@ SOCIAL_MEDIA_EXIST_OR_NOT_EXIST = [
 				"snapchat.com","telegram.com",
 				"twitch.com","discord.com","vk.com",
 				"vimeo.com","zoom.com",
-				"slideshare.com","flickr.com","github.com",
-				"pinterest.com","plus.google.com","meetup.com"
+				"slideshare.com","flickr.com",
+				"pinterest.com","meetup.com"
 				]
+
+
 
 
 
@@ -41,6 +43,25 @@ def Eliminate(value:str) -> bool:
 	for i in SOCIAL_MEDIA_EXIST_OR_NOT_EXIST:
 		if i in value:return True
 	return False
+
+def EmailIndicator(text:str) -> list:
+    pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    return list(set(re.findall(pattern, text)))
+
+
+def DomainIndicator(data:list) -> list:
+	Domains = []
+	for url in data:
+		if not Eliminate(url):
+			extR = tldextract.extract(url)
+			if extR.subdomain:
+				Domains.append('{}.{}.{}'.format(extR.subdomain,extR.domain,extR.suffix))
+			else:
+				Domains.append('{}.{}'.format(extR.domain,extR.suffix))
+		else:
+			pass
+	return list(set(Domains))
+
 
 def MultiProcessingTasks(urls:list) -> list:
 	queue = []
@@ -59,18 +80,22 @@ class LinkExtractor:
 		extractor = URLExtract()
 		try:
 			headers = {'User-agent': 'Mozilla/5.0'}
-			grab = requests.get(urls,proxies=PROXY_SERVERS if PROXY_MODE == True else None,headers=headers,timeout=20)
+			grab = requests.get(urls,proxies=PROXY_SERVERS if PROXY_MODE == True else None,headers=headers,timeout=(20))
 			if grab.status_code == 200:
 				soup = BeautifulSoup(grab.text, 'html.parser')
 				AllUrls = []
-				for link in soup.find_all("a"):
+				print(DomainIndicator(extractor.find_urls(grab.text)))
+				#Tikanma Problemi Var.
+				for link in soup.find_all(['a', 'link']):
 					data = link.get('href')
 					if extractor.find_urls(data):
 						if not Eliminate(data):AllUrls.append(data)
+					if data.startswith("/"):
+						if not Eliminate(urls+data):AllUrls.append(urls+data)
 				Result = list(set(AllUrls))
 				return Result
 			else:pass
-		except:pass
+		except:pass #Simdilik Goster
 		
 	@classmethod
 	def Start(self,url:str,results_queue:queue.Queue):
@@ -80,7 +105,7 @@ class LinkExtractor:
 			res = list(set(res))
 			for i,z in zip(range(1,len(res)),res):
 				res = self.Test(z)
-				Tst.append({"url":z,"links":res})
+				Tst.append(res)
 			results_queue.put(Tst)
 		except:pass
 
@@ -116,10 +141,14 @@ class LinkExtractor:
 	def __repr__(self):
 		return 'LinkExtractor(urls_=' + str(self.urls_) + ' ,workspacename_=' + self.workspacename_ + ')'
 
+def RegX(urls:list) -> list:
+	return ["http://"+re.sub(r"(https?:\/\/)?([w]{3}\.)?(\w*.\w*)([\/\w]*)", "\\3", i, 0, re.MULTILINE | re.IGNORECASE) for i in urls]
+
+
 def Indicator(urls):
-	print(LinkExtractor(urls,"Workspacename").Run())
+	print(LinkExtractor(RegX(urls),"Workspacename").Run())
 
 if __name__ == "__main__":
-	Domains = ["http://bg-tek.net"]
-	print(LinkExtractor(Domains,"Workspacename").Run())
+	Domains = ["openai.com"]
+	Indicator(Domains)
 	#sys.exit()

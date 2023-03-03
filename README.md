@@ -15,13 +15,13 @@
 
 ## Description
 
-Indicator collects informations (Static Files) to detect threats. Calculates hashes.
+Indicator collects informations (Static Files, Domains) to detect threats. Calculates hashes.
 
 Fundamental method of logic is IOC. An IOC is the cyber-equivalent of evidence left at a crime scene. 
 
 ## To-Do
 
-Domain, Email, Ipv4, Ipv6 collect \
+Email, Ipv4, Ipv6 collect \
 Result compare structure with Django \
 Quick crawling optimization
 
