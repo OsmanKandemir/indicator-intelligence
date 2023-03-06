@@ -3,8 +3,17 @@ from bs4 import BeautifulSoup
 from urlextract import URLExtract
 from multiprocessing import Pool
 import threading, queue
+from V1DomainFinder import DomainIndicator,ReadData,Remove
+from functions import Eliminate,Merge,EmailIndicator,MultiProcessingTasks
+#from downloads.V1StaticfileDownloader import stream_multiple
 #OK
 
+
+"""
+
+Author : OsmanKandemir
+
+"""
 
 #  _____      _   _             _               _____      _       _ _ _                           
 # |_   _|    | | (_)           | |             |_   _|    | |     | | (_)                          
@@ -21,54 +30,7 @@ PROXY_MODE = False
 
 #SocialMediaAccountFind Module
 
-SOCIAL_MEDIA_EXIST_OR_NOT_EXIST = [
-				"facebook.com","twitter.com",
-				"instagram.com","youtube.com",
-				"linkedin.com","github.com",
-				"pinterest.com","plus.google.com",
-				"tiktok.com","whatsapp.com",
-				"medium.com","reddit.com",
-				"snapchat.com","telegram.com",
-				"twitch.com","discord.com","vk.com",
-				"vimeo.com","zoom.com",
-				"slideshare.com","flickr.com",
-				"pinterest.com","meetup.com"
-				]
 
-
-
-
-
-def Eliminate(value:str) -> bool:
-	for i in SOCIAL_MEDIA_EXIST_OR_NOT_EXIST:
-		if i in value:return True
-	return False
-
-def EmailIndicator(text:str) -> list:
-    pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-    return list(set(re.findall(pattern, text)))
-
-
-def DomainIndicator(data:list) -> list:
-	Domains = []
-	for url in data:
-		if not Eliminate(url):
-			extR = tldextract.extract(url)
-			if extR.subdomain:
-				Domains.append('{}.{}.{}'.format(extR.subdomain,extR.domain,extR.suffix))
-			else:
-				Domains.append('{}.{}'.format(extR.domain,extR.suffix))
-		else:
-			pass
-	return list(set(Domains))
-
-
-def MultiProcessingTasks(urls:list) -> list:
-	queue = []
-	for i in urls:queue.append((i))
-	with Pool() as pool:
-		L = pool.map(self.Test, queue)
-	return L
 
 class LinkExtractor:
 	def __init__(self,urls:list,workspacename:str):
@@ -80,26 +42,32 @@ class LinkExtractor:
 		extractor = URLExtract()
 		try:
 			headers = {'User-agent': 'Mozilla/5.0'}
-			grab = requests.get(urls,proxies=PROXY_SERVERS if PROXY_MODE == True else None,headers=headers,timeout=(20))
+			grab = requests.get(urls,proxies=PROXY_SERVERS if PROXY_MODE == True else None,headers=headers,timeout=(20,1))
 			if grab.status_code == 200:
 				soup = BeautifulSoup(grab.text, 'html.parser')
 				AllUrls = []
-				print(DomainIndicator(extractor.find_urls(grab.text)))
-				#Tikanma Problemi Var.
+				DomainIndicator(extractor.find_urls(grab.text))
 				for link in soup.find_all(['a', 'link']):
 					data = link.get('href')
 					if extractor.find_urls(data):
 						if not Eliminate(data):AllUrls.append(data)
 					if data.startswith("/"):
-						if not Eliminate(urls+data):AllUrls.append(urls+data)
-				Result = list(set(AllUrls))
-				return Result
+						ext = tldextract.extract(urls)
+						if not Eliminate(urls+data):
+							if ext.subdomain:
+								AllUrls.append("http://" + ext.subdomain + "." + ext.domain + "." + ext.suffix + data)
+							else:
+								AllUrls.append("http://"+ ext.domain + "." + ext.suffix + data)
+				return list(set(AllUrls))
 			else:pass
-		except:pass #Simdilik Goster
+		except ConnectionError as Error:
+			print(Error.__class__.__name__)
+		except:pass
 		
 	@classmethod
 	def Start(self,url:str,results_queue:queue.Queue):
 		Tst = []
+		print("{}".format("Indicator is pulling to static links from Target."))
 		try:
 			res = self.Test(url)
 			res = list(set(res))
@@ -121,11 +89,12 @@ class LinkExtractor:
 			t.join()
 
 		results = []
-
 		while not results_queue.empty():
 			result = results_queue.get()
 			results.append(result)
-		return results
+
+
+		return Merge(results[0]), ReadData()
 
 	@property
 	def urls(self) -> list:
@@ -149,6 +118,6 @@ def Indicator(urls):
 	print(LinkExtractor(RegX(urls),"Workspacename").Run())
 
 if __name__ == "__main__":
-	Domains = ["openai.com"]
+	Domains = ["osmankandemir.com"]
 	Indicator(Domains)
 	#sys.exit()

@@ -1,4 +1,5 @@
 import hashlib
+#OK
 
 BUF_SIZE = 60000
 

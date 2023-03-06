@@ -4,7 +4,6 @@ from urlextract import URLExtract
 from multiprocessing import Pool
 import threading, queue
 import argparse
-
 #OK
 
 
