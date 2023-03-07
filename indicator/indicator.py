@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from urlextract import URLExtract
 from multiprocessing import Pool
 import threading, queue
+from log import msg
 from V1DomainFinder import DomainIndicator,ReadData,Remove
 from functions import Eliminate,Merge,EmailIndicator,MultiProcessingTasks
 #from downloads.V1StaticfileDownloader import stream_multiple
@@ -42,7 +43,7 @@ class LinkExtractor:
 		extractor = URLExtract()
 		try:
 			headers = {'User-agent': 'Mozilla/5.0'}
-			grab = requests.get(urls,proxies=PROXY_SERVERS if PROXY_MODE == True else None,headers=headers,timeout=(20,1))
+			grab = requests.get(urls,proxies=PROXY_SERVERS if PROXY_MODE == True else None,headers=headers,timeout=(5))
 			if grab.status_code == 200:
 				soup = BeautifulSoup(grab.text, 'html.parser')
 				AllUrls = []
@@ -61,13 +62,13 @@ class LinkExtractor:
 				return list(set(AllUrls))
 			else:pass
 		except ConnectionError as Error:
-			print(Error.__class__.__name__)
+			msg(Error.__class__.__name__)
 		except:pass
 		
 	@classmethod
 	def Start(self,url:str,results_queue:queue.Queue):
 		Tst = []
-		print("{}".format("Indicator is pulling to static links from Target."))
+		msg("Indicator is pulling to static links from Target.")
 		try:
 			res = self.Test(url)
 			res = list(set(res))
@@ -75,26 +76,29 @@ class LinkExtractor:
 				res = self.Test(z)
 				Tst.append(res)
 			results_queue.put(Tst)
-		except:pass
+		except:
+			msg("Thread" + Error.__class__.__name__)
+
 
 	def Run(self) -> list:
-		threads = []
-		results_queue = queue.Queue()
-		for i in self.urls_:
-			t = threading.Thread(target=self.Start, args=(i, results_queue))
-			threads.append(t)
-			t.start()
+		try:
+			threads = []
+			results_queue = queue.Queue()
+			for i in self.urls_:
+				t = threading.Thread(target=self.Start, args=(i, results_queue))
+				threads.append(t)
+				t.start()
 
-		for t in threads:
-			t.join()
+			for t in threads:
+				t.join()
 
-		results = []
-		while not results_queue.empty():
-			result = results_queue.get()
-			results.append(result)
-
-
-		return Merge(results[0]), ReadData()
+			results = []
+			while not results_queue.empty():
+				result = results_queue.get()
+				results.append(result)
+			return Merge(results[0]), ReadData()
+		except:
+			msg("Undefined Domain or Connection Error.")
 
 	@property
 	def urls(self) -> list:
@@ -115,9 +119,9 @@ def RegX(urls:list) -> list:
 
 
 def Indicator(urls):
-	print(LinkExtractor(RegX(urls),"Workspacename").Run())
+	msg(LinkExtractor(RegX(urls),"Workspacename").Run())
 
 if __name__ == "__main__":
-	Domains = ["osmankandemir.com"]
+	Domains = ["openai.com"]
 	Indicator(Domains)
 	#sys.exit()

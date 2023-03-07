@@ -1,8 +1,8 @@
 import requests,sys,re,tldextract,os
 from functions import Eliminate
+from log import msg
 
 PATH = os.getcwd()
-
 
 
 def Remove():
@@ -21,7 +21,7 @@ def SaveData(data):
     except:
         pass
 
-def ReadData():
+def ReadData() -> list:
     try: 
         with open("data.json","r") as File:
             Data = [domain.strip() for domain in File.readlines()]
@@ -31,8 +31,9 @@ def ReadData():
         pass
 
 
-def DomainIndicator(data:list) -> list:
+def DomainIndicator(data:list) -> None:
     Domains = []
+    msg("Fetching Related Domains.")
     for url in data:
         if not Eliminate(url):
             extR = tldextract.extract(url)
@@ -42,7 +43,6 @@ def DomainIndicator(data:list) -> list:
                 Domains.append('{}.{}'.format(extR.domain,extR.suffix))
         else:
             pass
-            
     SaveData(list(set(Domains)))
 
 
