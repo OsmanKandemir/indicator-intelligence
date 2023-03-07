@@ -76,7 +76,7 @@ class LinkExtractor:
 				res = self.Test(z)
 				Tst.append(res)
 			results_queue.put(Tst)
-		except:
+		except Exception as Error:
 			msg("Thread" + Error.__class__.__name__)
 
 
@@ -96,7 +96,8 @@ class LinkExtractor:
 			while not results_queue.empty():
 				result = results_queue.get()
 				results.append(result)
-			return Merge(results[0]), ReadData()
+			#return Merge(results[0]), ReadData()
+			return ReadData()
 		except:
 			msg("Undefined Domain or Connection Error.")
 
@@ -119,7 +120,8 @@ def RegX(urls:list) -> list:
 
 
 def Indicator(urls):
-	msg(LinkExtractor(RegX(urls),"Workspacename").Run())
+	#msg(LinkExtractor(RegX(urls),"Workspacename").Run())
+	LinkExtractor(RegX(urls),"Workspacename").Run()
 
 if __name__ == "__main__":
 	Domains = ["openai.com"]

@@ -15,7 +15,7 @@
 
 ## Description
 
-Indicator-Intelligence collects static files and associated domains. Calculates hashes to threat analysis.
+Indicator-Intelligence collects static files and related domains. Calculates hashes to threat analysis.
 
 
 Fundamental logic method is similar to IOC.
