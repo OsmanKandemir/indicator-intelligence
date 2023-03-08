@@ -22,9 +22,9 @@ Indicator-Intelligence collects static files and related domains for target. Cal
 Fundamental logic method is similar to IOC.
 
 ## TODO
-
-- [ ] Email, Ipv4, Ipv6 collect \
-- [ ] Result compare structure with Django \
+- [x] Releated domains collect
+- [ ] Email, Ipv4, Ipv6 collect
+- [ ] Result compare structure with Django
 - [ ] Quick crawling optimization
 
 ## Installation
