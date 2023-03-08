@@ -29,10 +29,6 @@ PROXY_SERVERS = {}
 
 PROXY_MODE = False
 
-#SocialMediaAccountFind Module
-
-
-
 class LinkExtractor:
 	def __init__(self,urls:list,workspacename:str):
 		self.urls_ = urls
@@ -127,6 +123,6 @@ def Indicator(urls):
 	LinkExtractor(RegX(urls),"Workspacename").Run()
 
 if __name__ == "__main__":
-	Domains = ["bg-tek.net"]
+	Domains = ["bg-tek.net","coslat.com","pentestbx.com"]
 	Indicator(Domains)
 	#sys.exit()
