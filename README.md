@@ -3,10 +3,11 @@
 
 [![Indicator-Intelligence](https://img.shields.io/badge/Indicator-Intelligence-blue)](https://www.github.com/OsmanKandemir/indicator-intelligence)
 [![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/OsmanKandemir/indicator-intelligence)
+[![Pip Version](https://img.shields.io/badge/pypi-23.0.1+-green)](https://www.python.org)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/smicallef/spiderfoot/master/LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.7+-green)](https://www.python.org)
 [![Docker](https://img.shields.io/badge/docker-build-important.svg?logo=Docker)](https://www.docker.com)
-![GitHub repo size](https://img.shields.io/github/repo-size/OsmanKandemir/indicator-intelligence?style=flat&logo=github)
+
 
 
 
