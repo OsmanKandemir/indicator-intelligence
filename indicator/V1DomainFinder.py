@@ -5,7 +5,7 @@ import asyncio
 import aiodns
 
 
-PATH = os.getcwd()
+PATH = os.getcwd() or "/indicator"
 
 
 async def check_domains(domains:list) -> list:
@@ -22,7 +22,7 @@ async def check_domains(domains:list) -> list:
 async def resolve_domain(resolver:aiodns.DNSResolver, domain:str) -> str:
     try:
         result = await resolver.query(domain, 'A')
-        return result[0].host
+        return print(f"{domain} ->> {result[0].host}")
     except asyncio.TimeoutError:
         return ""
     except aiodns.error.DNSError:
@@ -57,6 +57,7 @@ def ReadData() -> list:
             except KeyboardInterrupt:
                 pass
     except:
+        msg("Data.json Error")
         pass
 
 

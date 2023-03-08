@@ -1,4 +1,5 @@
 import hashlib
+from log import msg
 #OK
 
 BUF_SIZE = 60000
@@ -26,7 +27,7 @@ class HashCalculator:
                     self.Update(data)
             return [self.md5.hexdigest(),self.sha256.hexdigest(),self.sha512.hexdigest()]
         except (FileNotFoundError):
-            #print(f"{Filename_} not found!",file=sys.stderr)
+            msg(f"{Filename_} not found!",file=sys.stderr)
             return []
         except:
             return []

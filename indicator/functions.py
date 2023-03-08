@@ -34,7 +34,7 @@ def EmailIndicator(text:str) -> list:
     pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     return list(set(re.findall(pattern, text)))
 
-def RemoveSlash(name):
+def RemoveSlash(name:str) -> str:
     replacing_multiple_chars = [('u002F', ''), ('/', '')]
     for char, i in replacing_multiple_chars:
         if char in name:

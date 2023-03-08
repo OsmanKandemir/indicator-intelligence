@@ -8,4 +8,4 @@ ENTRYPOINT ["python", "indicator/indicator_docker.py"]
 
 
 #docker build -t indicator .
-#docker run indicator --domain http://google.com
+#docker run indicator --domain google.com
