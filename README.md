@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/smicallef/spiderfoot/master/LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.7+-green)](https://www.python.org)
 [![Docker](https://img.shields.io/badge/docker-build-important.svg?logo=Docker)](https://www.docker.com)
-
+![GitHub repo size](https://img.shields.io/github/repo-size/OsmanKandemir/indicator-intelligence?style=flat&logo=github)
 
 
 
@@ -15,12 +15,12 @@
 
 ## Description
 
-Indicator-Intelligence collects static files and related domains. Calculates hashes to threat analysis.
+Indicator-Intelligence collects static files and related domains for target. Calculates hashes to threat analysis.
 
 
 Fundamental logic method is similar to IOC.
 
-## To-Do
+## TODO
 
 Email, Ipv4, Ipv6 collect \
 Result compare structure with Django \
