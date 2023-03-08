@@ -23,9 +23,9 @@ Fundamental logic method is similar to IOC.
 
 ## TODO
 
-- [] Email, Ipv4, Ipv6 collect \
-- [] Result compare structure with Django \
-- [] Quick crawling optimization
+- [ ] Email, Ipv4, Ipv6 collect \
+- [ ] Result compare structure with Django \
+- [ ] Quick crawling optimization
 
 ## Installation
 
