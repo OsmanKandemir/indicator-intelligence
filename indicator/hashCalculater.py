@@ -1,50 +1,73 @@
-import hashlib
+import hashlib,sys
 from log import msg
+from functions import bcolors
+import threading, queue
 #OK
 
 BUF_SIZE = 60000
 
+
 class HashCalculator:
-
-    def __init__(self,Filename:str):
-        self.Filename_ = Filename
-        self.md5 = hashlib.md5()
-        self.sha256 = hashlib.sha256()
-        self.sha512 = hashlib.sha512()
+    def __init__(self,Filenames:list):
+        self.Filenames_ = Filenames
 
 
-    def Update(self,data:bytes):
-        self.md5.update(data)
-        self.sha256.update(data)
-        self.sha512.update(data)
-
-    def run(self) -> list:
+    @classmethod
+    def run(self,FileN:str,results_queue:queue.Queue) -> list:
+        md5,sha256,sha512 = hashlib.md5(),hashlib.sha256(),hashlib.sha512()
         try:
-            with open(self.Filename, 'rb') as File:
+            with open(FileN, 'rb') as File:
                 while True:
                     data = File.read(BUF_SIZE)
                     if not data:break
-                    self.Update(data)
-            return [self.md5.hexdigest(),self.sha256.hexdigest(),self.sha512.hexdigest()]
+                    md5.update(data)
+                    sha256.update(data)
+                    sha512.update(data)
+                results_queue.put({FileN:[md5.hexdigest(),sha256.hexdigest(),sha512.hexdigest()]})
         except (FileNotFoundError):
-            msg(f"{Filename_} not found!",file=sys.stderr)
-            return []
+            msg(f"{bcolors.OKBLUE}{FileN} not found!{bcolors.ENDC}",file=sys.stderr)
+            pass
+        except:pass
+    
+    def Run(self) -> list:
+        try:
+            threads = []
+            results_queue = queue.Queue()
+            for i in self.Filenames_:
+                t = threading.Thread(target=self.run, args=(i, results_queue))
+                threads.append(t)
+                t.start()
+
+            for t in threads:
+                t.join()
+
+            results = []
+            while not results_queue.empty():
+                result = results_queue.get()
+                results.append(result)
+            #return Merge(results[0]), ReadData()
+            
+            del threads[:]
+
+            return results
+
         except:
-            return []
+            msg(f"{bcolors.OKBLUE}Thread Error.{bcolors.ENDC}")
 
     @property
-    def Filename(self):
-        return self.Filename_
+    def Filenames(self):
+        return self.Filenames_
 
     def __str__(self):
         return f"Hash Calculater"
         
     def __repr__(self):
-        return 'HashCalculator(Filename_=' + str(self.Filename_) + ')'
+        return 'HashCalculator(Filenames_=' + str(self.Filenames_) + ')'
 
 
-def HASH(File):
-    return HashCalculator(File).run()
+def HASH(Files):
+    return HashCalculator(Files).Run()
 
 if __name__ == '__main__':
+    #print(HASH(["indicator.py","log.py","functions.py"]))
     sys.exit()
