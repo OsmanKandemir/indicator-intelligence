@@ -22,7 +22,7 @@ async def check_domains(domains:list) -> list:
 async def resolve_domain(resolver:aiodns.DNSResolver, domain:str) -> str:
     try:
         result = await resolver.query(domain, 'A')
-        return print(f"DOMAIN : {domain} - DNS_IP : {result[0].host}")
+        return print(f"DOMAIN : {domain} - IPs : {[hosts.host for hosts in result]}")
     except asyncio.TimeoutError:
         return ""
     except aiodns.error.DNSError:
@@ -30,7 +30,7 @@ async def resolve_domain(resolver:aiodns.DNSResolver, domain:str) -> str:
 
 
 def Remove():
-    Path = PATH + "/data.json"
+    Path = PATH + "/data.log"
     if os.path.isfile(Path):
         os.remove(Path)
     else:
@@ -38,7 +38,7 @@ def Remove():
 
 def SaveData(data):
     try: 
-        with open("data.json","a+") as File:
+        with open("data.log","a+") as File:
             for domain in data:
                 File.write(domain + "\n")
         File.close()
@@ -47,7 +47,7 @@ def SaveData(data):
 
 def ReadData() -> list:
     try: 
-        with open("data.json","r") as File:
+        with open("data.log","r") as File:
             Data = [domain.strip() for domain in File.readlines()]
             Remove()
             try:
@@ -57,7 +57,7 @@ def ReadData() -> list:
             except KeyboardInterrupt:
                 pass
     except:
-        msg("Data.json Error")
+        msg("Data.log Error")
         pass
 
 

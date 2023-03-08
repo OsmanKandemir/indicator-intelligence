@@ -16,7 +16,7 @@
 
 ## Description
 
-Indicator-Intelligence collects static files and related domains for target. Calculates hashes to threat analysis.
+Indicator-Intelligence collects static files and related domains for target.
 
 
 Fundamental logic method is similar to IOC.
@@ -25,7 +25,8 @@ Fundamental logic method is similar to IOC.
 - [x] Releated domains collect
 - [ ] Email, Ipv4, Ipv6 collect
 - [ ] Result compare structure with Django
-- [ ] Quick crawling optimization
+- [ ] Quick crawling optimization and more indicators
+- [ ] Calculates hashes to threat analysis
 
 ## Installation
 

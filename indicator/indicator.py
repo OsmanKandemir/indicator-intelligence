@@ -5,7 +5,17 @@ from multiprocessing import Pool
 import threading, queue
 from log import msg
 from V1DomainFinder import DomainIndicator,ReadData,Remove
-from functions import Eliminate,Merge,EmailIndicator,MultiProcessingTasks
+from functions import (
+
+					  Eliminate,
+					  Merge,
+					  EmailIndicator,
+					  MultiProcessingTasks,
+					  RegX
+					  
+					  )
+
+
 #from downloads.V1StaticfileDownloader import stream_multiple
 #OK
 
@@ -114,15 +124,12 @@ class LinkExtractor:
 	def __repr__(self):
 		return 'LinkExtractor(urls_=' + str(self.urls_) + ' ,workspacename_=' + self.workspacename_ + ')'
 
-def RegX(urls:list) -> list:
-	return ["http://"+re.sub(r"(https?:\/\/)?([w]{3}\.)?(\w*.\w*)([\/\w]*)", "\\3", i, 0, re.MULTILINE | re.IGNORECASE) for i in urls]
-
 
 def Indicator(urls):
 	#msg(LinkExtractor(RegX(urls),"Workspacename").Run())
 	LinkExtractor(RegX(urls),"Workspacename").Run()
 
 if __name__ == "__main__":
-	Domains = ["bg-tek.net","coslat.com","pentestbx.com"]
+	Domains = ["https://bg-tek.net"]
 	Indicator(Domains)
 	#sys.exit()

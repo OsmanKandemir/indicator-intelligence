@@ -47,3 +47,6 @@ def MultiProcessingTasks(urls:list) -> list:
 	with Pool() as pool:
 		L = pool.map(self.Test, queue)
 	return L
+
+def RegX(urls:list) -> list:
+	return ["http://"+re.sub(r"(https?:\/\/)?([w]{3}\.)?(\w*.\w*)([\/\w]*)", "\\3", i, 0, re.MULTILINE | re.IGNORECASE) for i in urls]
