@@ -1,4 +1,6 @@
 
+from functions import bcolors
+
 class log:
     info = "Info"
 
@@ -11,4 +13,4 @@ def time():
 def msg(m):
     ti = " , "
     # n = 55
-    print(f"{log.info}{ti}{time()}{ti}{m}")
+    print(f"{bcolors.LOG}{log.info}{ti}{time()}{ti}{m}{bcolors.ENDC}")

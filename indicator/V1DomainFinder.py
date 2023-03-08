@@ -1,5 +1,5 @@
 import requests,sys,re,tldextract,os
-from functions import Eliminate,RemoveSlash
+from functions import Eliminate,RemoveSlash,bcolors
 from log import msg
 import asyncio
 import aiodns
@@ -8,21 +8,22 @@ import aiodns
 PATH = os.getcwd() or "/"
 
 
+
 async def check_domains(domains:list) -> list:
     RealRest = []
     resolver = aiodns.DNSResolver()
-    msg("Fetching Related Domains.")
+    msg(f"{bcolors.OKBLUE} Fetching Related Domains.{bcolors.ENDC}" )
     tasks = [asyncio.ensure_future(resolve_domain(resolver, domain)) for domain in domains]
     results = await asyncio.gather(*tasks)
-    for domain, result in zip(domains, results):
-        if result:
-            RealRest.append({"domain":domain,"dns_ip":result})
-    print(RealRest)
+    # for domain, result in zip(domains, results):
+    #     if result:
+    #         RealRest.append({"domain":domain,"dns_ip":result})
+    # print(RealRest)
 
 async def resolve_domain(resolver:aiodns.DNSResolver, domain:str) -> str:
     try:
         result = await resolver.query(domain, 'A')
-        return print(f"DOMAIN : {domain} - IPs : {[hosts.host for hosts in result]}")
+        return print(f"DOMAIN : {bcolors.WARNING}{domain} {bcolors.ENDC} IPs : {bcolors.OKBLUE}{[hosts.host for hosts in result]} {bcolors.ENDC}")
     except asyncio.TimeoutError:
         return ""
     except aiodns.error.DNSError:
@@ -57,7 +58,7 @@ def ReadData() -> list:
             except KeyboardInterrupt:
                 pass
     except:
-        msg("Data.log Error")
+        msg(f"{bcolors.OKBLUE}Data.log Error{bcolors.ENDC}")
         pass
 
 

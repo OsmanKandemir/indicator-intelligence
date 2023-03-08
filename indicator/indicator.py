@@ -1,10 +1,15 @@
-import requests,sys,re,tldextract
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup,MarkupResemblesLocatorWarning
 from urlextract import URLExtract
+import requests,sys,re,tldextract
 from multiprocessing import Pool
 import threading, queue
 from log import msg
-from V1DomainFinder import DomainIndicator,ReadData,Remove
+from V1DomainFinder import (
+							DomainIndicator,
+							ReadData,
+							Remove,
+							bcolors
+							)
 from functions import (
 
 					  Eliminate,
@@ -14,26 +19,29 @@ from functions import (
 					  RegX
 					  
 					  )
+import warnings
 
+warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
 
 #from downloads.V1StaticfileDownloader import stream_multiple
 #OK
 
 
-"""
+
+print(f"""{bcolors.OKGREEN}
+	
+ _____      _   _             _               _____      _       _ _ _                           
+|_   _|    | | (_)           | |             |_   _|    | |     | | (_)                          
+   | | _ __ | |_ _  __ _  __ _| |_ ___  _ __    | | _ __ | |_ ___| | |_  __ _  ___ _ __   ___ ___ 
+   | || '_ \| __| |/ _` |/ _` | __/ _ \| '__|   | || '_ \| __/ _ \ | | |/ _` |/ _ \ '_ \ / __/ _ \\
+  _| || | | | |_| | (_| | (_| | || (_) | |     _| || | | | ||  __/ | | | (_| |  __/ | | | (_|  __/
+  \___/_| |_|\__|_|\__, |\__,_|\__\___/|_|     \___/_| |_|\__\___|_|_|_|\__, |\___|_| |_|\___\___|
+                    __/ |                                                __/ |                    
+                   |___/                                                |___/                     
 
 Author : OsmanKandemir
 
-"""
-
-#  _____      _   _             _               _____      _       _ _ _                           
-# |_   _|    | | (_)           | |             |_   _|    | |     | | (_)                          
-#   | | _ __ | |_ _  __ _  __ _| |_ ___  _ __    | | _ __ | |_ ___| | |_  __ _  ___ _ __   ___ ___ 
-#   | || '_ \| __| |/ _` |/ _` | __/ _ \| '__|   | || '_ \| __/ _ \ | | |/ _` |/ _ \ '_ \ / __/ _ \\
-#  _| || | | | |_| | (_| | (_| | || (_) | |     _| || | | | ||  __/ | | | (_| |  __/ | | | (_|  __/
-#  \___/_| |_|\__|_|\__, |\__,_|\__\___/|_|     \___/_| |_|\__\___|_|_|_|\__, |\___|_| |_|\___\___|
-#                    __/ |                                                __/ |                    
-#                   |___/                                                |___/                     
+{bcolors.ENDC}""")
 
 PROXY_SERVERS = {}
 
@@ -49,32 +57,35 @@ class LinkExtractor:
 		extractor = URLExtract()
 		try:
 			headers = {'User-agent': 'Mozilla/5.0'}
-			grab = requests.get(urls,proxies=PROXY_SERVERS if PROXY_MODE == True else None,headers=headers,timeout=(5))
+			grab = requests.get(urls,proxies=PROXY_SERVERS if PROXY_MODE == True else None,headers=headers,timeout=(2))
 			if grab.status_code == 200:
-				soup = BeautifulSoup(grab.text, 'html.parser')
+				soup = BeautifulSoup(grab.content, 'html.parser',from_encoding="iso-8859-1")
 				AllUrls = []
 				DomainIndicator(extractor.find_urls(grab.text))
+				#'base','form'
 				for link in soup.find_all(['a', 'link']):
 					data = link.get('href')
-					if extractor.find_urls(data):
-						if not Eliminate(data):AllUrls.append(data)
-					if data.startswith("/"):
-						ext = tldextract.extract(urls)
-						if not Eliminate(urls+data):
-							if ext.subdomain:
-								AllUrls.append("http://" + ext.subdomain + "." + ext.domain + "." + ext.suffix + data)
-							else:
-								AllUrls.append("http://"+ ext.domain + "." + ext.suffix + data)
+					try:
+						if extractor.find_urls(data):
+							if not Eliminate(data):AllUrls.append(data)
+						if data.startswith("/"):
+							ext = tldextract.extract(urls)
+							if not Eliminate(urls+data):
+								if ext.subdomain:
+									AllUrls.append("http://" + ext.subdomain + "." + ext.domain + "." + ext.suffix + data)
+								else:
+									AllUrls.append("http://"+ ext.domain + "." + ext.suffix + data)
+					except:continue
 				return list(set(AllUrls))
 			else:pass
 		except ConnectionError as Error:
-			msg(Error.__class__.__name__)
+			msg(f"{bcolors.OKBLUE}{Error.__class__.__name__}{bcolors.ENDC}")
 		except:pass
 		
 	@classmethod
 	def Start(self,url:str,results_queue:queue.Queue):
 		Tst = []
-		msg("Indicator is pulling to static links from Target.")
+		msg(f"{bcolors.OKBLUE}Indicator is pulling to static links from Target.{bcolors.ENDC}")
 		try:
 			res = self.Test(url)
 			res = list(set(res))
@@ -83,7 +94,7 @@ class LinkExtractor:
 				Tst.append(res)
 			results_queue.put(Tst)
 		except Exception as Error:
-			msg("Thread - Connection Error ")
+			msg(f"{bcolors.OKBLUE}Thread - Connection Error{bcolors.ENDC}")
 
 
 	def Run(self) -> list:
@@ -108,7 +119,7 @@ class LinkExtractor:
 
 			return ReadData()
 		except:
-			msg("Undefined Domain or Connection Error.")
+			msg(f"{bcolors.OKBLUE}Undefined Domain or Connection Error.{bcolors.ENDC}")
 
 	@property
 	def urls(self) -> list:
@@ -130,6 +141,6 @@ def Indicator(urls):
 	LinkExtractor(RegX(urls),"Workspacename").Run()
 
 if __name__ == "__main__":
-	Domains = ["https://bg-tek.net"]
+	Domains = ["openai.com"]
 	Indicator(Domains)
 	#sys.exit()
