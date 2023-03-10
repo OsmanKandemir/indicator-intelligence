@@ -4,17 +4,21 @@ import requests,sys,re,tldextract
 from multiprocessing import Pool
 import threading, queue
 from log import msg
-from V1DomainFinder import (DomainIndicator,
-							ReadData,
-							Remove,
-							bcolors)
+from V1DomainFinder import (D
+                            omainIndicator,
+                            ReadData,
+                            Remove,
+                            bcolors
+                            )
 
-from functions import (Eliminate,
-					   Merge,
-					   EmailIndicator,
-					   MultiProcessingTasks,
-					   RegX)
-                       
+from functions import (
+                    Eliminate,
+                    Merge,
+                    EmailIndicator,
+                    MultiProcessingTasks,
+                    RegX
+                    )
+
 import warnings
 
 warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
