@@ -4,8 +4,8 @@ import requests,sys,re,tldextract
 from multiprocessing import Pool
 import threading, queue
 from log import msg
-from V1DomainFinder import (D
-                            omainIndicator,
+from V1DomainFinder import (
+                            DomainIndicator,
                             ReadData,
                             Remove,
                             bcolors
