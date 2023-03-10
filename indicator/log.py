@@ -2,7 +2,7 @@
 from functions import bcolors
 
 class log:
-    info = "Info"
+    info = "[INF]"
 
 
 def time():
@@ -13,4 +13,4 @@ def time():
 def msg(m):
     ti = " , "
     # n = 55
-    print(f"{bcolors.LOG}{log.info}{ti}{time()}{ti}{m}{bcolors.ENDC}")
+    print(f"{bcolors.LOG}{log.info}{bcolors.ENDC}{ti}{time()}{ti}{m}")

@@ -72,7 +72,7 @@ def DomainIndicator(data:list) -> None:
             else:
                 Domains.append('{}.{}'.format(RemoveSlash(extR.domain),RemoveSlash(extR.suffix)))
         else:
-            pass
+            continue
     SaveData(list(set(Domains)))
 
 
