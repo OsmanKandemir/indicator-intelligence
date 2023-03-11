@@ -4,24 +4,27 @@ import requests,sys,re,tldextract
 from multiprocessing import Pool
 import threading, queue
 from log import msg
-from V1DomainFinder import (
+import argparse
+
+from V1DomainFinder import	(
                             DomainIndicator,
                             ReadData,
                             Remove,
                             bcolors
-                            )
+							)
 
-from functions import (
-                    Eliminate,
-                    Merge,
-                    EmailIndicator,
-                    MultiProcessingTasks,
-                    RegX
-                    )
+from functions import	(
+                    	Eliminate,
+                    	Merge,
+                    	EmailIndicator,
+                    	MultiProcessingTasks,
+                    	RegX
+						)
 
 import warnings
 
 warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
+
 
 #from downloads.V1StaticfileDownloader import stream_multiple
 #OK
@@ -30,8 +33,8 @@ warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
 
 print(f"""{bcolors.OKGREEN}
 	
- _____      _   _             _               _____      _       _ _ _                           
-|_   _|    | | (_)           | |             |_   _|    | |     | | (_)                          
+  _____      _   _             _               _____      _       _ _ _                           
+ |_   _|    | | (_)           | |             |_   _|    | |     | | (_)                          
    | | _ __ | |_ _  __ _  __ _| |_ ___  _ __    | | _ __ | |_ ___| | |_  __ _  ___ _ __   ___ ___ 
    | || '_ \| __| |/ _` |/ _` | __/ _ \| '__|   | || '_ \| __/ _ \ | | |/ _` |/ _ \ '_ \ / __/ _ \\
   _| || | | | |_| | (_| | (_| | || (_) | |     _| || | | | ||  __/ | | | (_| |  __/ | | | (_|  __/
@@ -43,21 +46,26 @@ Author : OsmanKandemir
 
 {bcolors.ENDC}""")
 
-PROXY_SERVERS = {}
 
-PROXY_MODE = False
+
+
+
 
 class LinkExtractor:
-	def __init__(self,urls:list,workspacename:str):
+
+
+
+	def __init__(self,urls:list,workspacename:str,proxy_servers:dict):
 		self.urls_ = urls
 		self.workspacename_ = workspacename
+		self.proxy_servers = proxy_servers
 
-	@staticmethod
-	def Test(urls:str) -> list: 
+	
+	def Test(self,urls:str) -> list:
 		extractor = URLExtract()
 		try:
 			headers = {'User-agent': 'Mozilla/5.0'}
-			grab = requests.get(urls,proxies=PROXY_SERVERS if PROXY_MODE == True else None,headers=headers,timeout=(2))
+			grab = requests.get(urls,proxies=self.proxy_servers,headers=headers,timeout=(2))
 			if grab.status_code == 200:
 				soup = BeautifulSoup(grab.content, 'html.parser',from_encoding="iso-8859-1")
 				AllUrls = []
@@ -75,14 +83,21 @@ class LinkExtractor:
 									AllUrls.append("http://" + ext.subdomain + "." + ext.domain + "." + ext.suffix + data)
 								else:
 									AllUrls.append("http://"+ ext.domain + "." + ext.suffix + data)
-					except:continue
+							else:
+								continue
+						else:
+							continue
+					except:
+						continue
 				return list(set(AllUrls))
-			else:pass
+			else:
+				pass
 		except ConnectionError as Error:
 			msg(f"{bcolors.OKBLUE}{Error.__class__.__name__}{bcolors.ENDC}")
-		except:pass
+		except:
+			pass
 		
-	@classmethod
+
 	def Start(self,url:str,results_queue:queue.Queue):
 		Tst = []
 		msg(f"{bcolors.OKBLUE}Indicator is pulling to static links from Target.{bcolors.ENDC}")
@@ -94,7 +109,7 @@ class LinkExtractor:
 				Tst.append(res)
 			results_queue.put(Tst)
 		except Exception as Error:
-			msg(f"{bcolors.OKBLUE}Thread - Connection Error{bcolors.ENDC}")
+			msg(f"{bcolors.OKBLUE}Thread - Connection Error or {Error}{bcolors.ENDC}")
 
 
 	def Run(self) -> list:
@@ -105,7 +120,7 @@ class LinkExtractor:
 				t = threading.Thread(target=self.Start, args=(i, results_queue))
 				threads.append(t)
 				t.start()
-
+			
 			for t in threads:
 				t.join()
 
@@ -136,9 +151,10 @@ class LinkExtractor:
 		return 'LinkExtractor(urls_=' + str(self.urls_) + ' ,workspacename_=' + self.workspacename_ + ')'
 
 
-def Indicator(urls):
+def Indicator(urls,proxy_servers = None):
+	#Burda Proxy_servers parametresi var dikkat et.
 	#msg(LinkExtractor(RegX(urls),"Workspacename").Run())
-	LinkExtractor(RegX(urls),"Workspacename").Run()
+	LinkExtractor(RegX(urls),"Workspacename",proxy_servers).Run()
 
 if __name__ == "__main__":
 	Domains = ["openai.com"]
