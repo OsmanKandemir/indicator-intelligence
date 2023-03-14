@@ -1,33 +1,34 @@
-from bs4 import (
-				BeautifulSoup,
-				MarkupResemblesLocatorWarning,
-				XMLParsedAsHTMLWarning
-				)
-
+import requests,sys,re,tldextract,argparse
 from urlextract import URLExtract
-import requests,sys,re,tldextract
 from multiprocessing import Pool
 import threading, queue
-from log import (
-				msg,
-				worktime
+from bs4 import (
+				MarkupResemblesLocatorWarning,
+				XMLParsedAsHTMLWarning,
+				BeautifulSoup
 				)
-import argparse
-
-from V1DomainFinder import (
-							DomainIndicator,
-							ReadData,
-							Remove,
-							bcolors
-							)
-
 from functions import	(
+						MultiProcessingTasks,
+						EmailIndicator,
                     	Eliminate,
                     	Merge,
-                    	EmailIndicator,
-                    	MultiProcessingTasks,
                     	RegX
 						)
+
+
+
+from V1DomainFinder import	(
+							DomainIndicator,
+							ReadData,
+							bcolors,
+							Remove,
+							)
+from log import (
+				worktime,
+				msg
+				)
+
+
 
 import warnings
 
