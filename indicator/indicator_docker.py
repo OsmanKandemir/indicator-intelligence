@@ -62,11 +62,12 @@ class LinkExtractor:
 
 
 
-	def __init__(self,urls:list,worktime:str,proxy_servers:dict,agent:str):
+	def __init__(self,urls:list,worktime:str,proxy_servers:dict,agent:str,json:str):
 		self.urls_ = urls
 		self.worktime_ = worktime
-		self.proxy_servers = proxy_servers
+		self.proxy_servers = {"http" : proxy for proxy in proxy_servers}
 		self.agent =  {'User-agent':agent if agent else 'Mozilla/5.0'}
+		self.json = json
 
 	
 	def Test(self,urls:str) -> list:
@@ -138,7 +139,7 @@ class LinkExtractor:
 			#return Merge(results[0]), ReadData()
 			
 			del threads[:]
-			return ReadData(self.worktime_)
+			return ReadData(self.worktime_,self.json)
 		except:
 			msg(f"{bcolors.OKBLUE}Undefined Domain or Connection Error.{bcolors.ENDC}")
 
@@ -157,10 +158,9 @@ class LinkExtractor:
 		return 'LinkExtractor(urls_=' + str(self.urls_) + ' ,workspacename_=' + self.worktime_ + ')'
 
 
-def Indicator(domains,proxy_servers,agent):
+def Indicator(domains,proxy_servers,agent,json):
 	#msg(LinkExtractor(RegX(urls),"worktime").Run())
-
-	LinkExtractor(RegX(domains),worktime(),proxy_servers,agent).Run()
+	LinkExtractor(RegX(domains),worktime(),proxy_servers,agent,json).Run()
 
 def STARTS():
 
@@ -170,17 +170,27 @@ def STARTS():
 	parser.add_argument("-d","--domains", nargs='+', required="True", help="Input Targets. --domains sample.com sample2.com")
 	parser.add_argument("-p","--proxies", nargs='+', help="Use proxy. --proxies 0.0.0.0:80 1.1.1.1:8080")
 	parser.add_argument("-a","--agent", help="Use agent. --agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' ")
-	parser.add_argument("-o","--json", action='store_true', help="JSON output")
+	parser.add_argument("-o","--json", help="JSON output. --json result.txt")
 	args = parser.parse_args()
 
 
-	json = args.json if args.json else False
-	agent = args.agent if args.agent else False
-	if args.proxies:proxy = {"http" : proxy for proxy in args.proxies}
 	if args.domains:domains = [domain for domain in args.domains]
+	if args.proxies:proxy = {"http" : proxy for proxy in args.proxies}
+	#PROXY Düzeltmesinden Devam Et.
+	# proxies = {
+  	# "http": "http://10.10.1.10:3128",
+  	# 	"https": "https://10.10.1.10:1080",
+	# }
+	# requests.get("http://example.org", proxies=proxies)
+
+	agent = args.agent if args.agent else False
+	json = args.json if args.json else False
+	
+	
+	
 
 
-	Indicator(domains,proxy,agent)
+	Indicator(domains,proxy,agent,json)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-import re
+import re,json
 from multiprocessing import Pool
 import threading, queue
 
@@ -71,3 +71,8 @@ def MultiProcessingTasks(urls:list) -> list:
 def RegX(urls:list) -> list:
     assert type(urls) == list
     return ["http://"+re.sub(r"(https?:\/\/)?([w]{3}\.)?(\w*.\w*)([\/\w]*)", "\\3", i, 0, re.MULTILINE | re.IGNORECASE) for i in urls]
+
+def JsonSave(name:str,data:dict):
+    assert [type(name),type(data)] == [str,dict]
+    with open(name if ".json" in name else name + ".json", "w+") as outfile:
+        json.dump(data, outfile)
