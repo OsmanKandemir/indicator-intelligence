@@ -14,11 +14,11 @@ from log import (
 				)
 import argparse
 
-from V1DomainFinder import	(
-                            DomainIndicator,
-                            ReadData,
-                            Remove,
-                            bcolors
+from V1DomainFinder import (
+							DomainIndicator,
+							ReadData,
+							Remove,
+							bcolors
 							)
 
 from functions import	(
