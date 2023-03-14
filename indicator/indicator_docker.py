@@ -59,17 +59,17 @@ class LinkExtractor:
 
 
 
-	def __init__(self,urls:list,workspacename:str,proxy_servers:dict):
+	def __init__(self,urls:list,workspacename:str,proxy_servers:dict,agent:str):
 		self.urls_ = urls
 		self.workspacename_ = workspacename
 		self.proxy_servers = proxy_servers
+		self.agent =  {'User-agent':agent if agent else 'Mozilla/5.0'}
 
 	
 	def Test(self,urls:str) -> list:
 		extractor = URLExtract()
 		try:
-			headers = {'User-agent': 'Mozilla/5.0'}
-			grab = requests.get(urls,proxies=self.proxy_servers,headers=headers,timeout=(2))
+			grab = requests.get(urls,proxies=self.proxy_servers,headers=self.agent,timeout=(2))
 			if grab.status_code == 200:
 				soup = BeautifulSoup(grab.content, 'html.parser',from_encoding="iso-8859-1")
 				AllUrls = []
@@ -155,28 +155,30 @@ class LinkExtractor:
 		return 'LinkExtractor(urls_=' + str(self.urls_) + ' ,workspacename_=' + self.workspacename_ + ')'
 
 
-def Indicator(urls,proxy_servers):
+def Indicator(domains,proxy_servers,agent):
 
 	#msg(LinkExtractor(RegX(urls),"Workspacename").Run())
-	LinkExtractor(RegX(urls),"Workspacename",proxy_servers).Run()
+	LinkExtractor(RegX(domains),"Workspacename",proxy_servers,agent).Run()
 
 def STARTS():
 
 	proxy = set()
 
 	parser = argparse.ArgumentParser()
-	parser.add_argument("-d","--domains", nargs='+', required="True", help="Input a domains to recursively parse all static located in a page")
-	parser.add_argument("-p","--proxies", nargs='+', help="Use proxy for all pages")
+	parser.add_argument("-d","--domains", nargs='+', required="True", help="Input Targets. --domains sample.com sample2.com")
+	parser.add_argument("-p","--proxies", nargs='+', help="Use proxy. --proxies 0.0.0.0:80 1.1.1.1:8080")
+	parser.add_argument("-a","--agent", help="Use agent. --agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' ")
 	parser.add_argument("-o","--json", action='store_true', help="JSON output")
 	args = parser.parse_args()
 
 
-	if args.json:output = args.json
+	json = args.json if args.json else False
+	agent = args.agent if args.agent else False
 	if args.proxies:proxy = {"http" : proxy for proxy in args.proxies}
 	if args.domains:domains = [domain for domain in args.domains]
 
 
-	Indicator(domains,proxy)
+	Indicator(domains,proxy,agent)
 
 
 if __name__ == "__main__":
