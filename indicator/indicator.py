@@ -1,4 +1,9 @@
-from bs4 import BeautifulSoup,MarkupResemblesLocatorWarning
+from bs4 import (
+				BeautifulSoup,
+				MarkupResemblesLocatorWarning,
+				XMLParsedAsHTMLWarning
+				)
+
 from urlextract import URLExtract
 import requests,sys,re,tldextract
 from multiprocessing import Pool
@@ -23,31 +28,30 @@ from functions import	(
 
 import warnings
 
+warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
 
 
 #from downloads.V1StaticfileDownloader import stream_multiple
 #OK
 
+#BU HATAYI UNUTMA
+#[INF] , March 13 2023 - 14:19:15 , Thread - Connection Error or 'NoneType' object is not iterable
 
 
 print(f"""{bcolors.OKGREEN}
 	
-  _____      _   _             _               _____      _       _ _ _                           
- |_   _|    | | (_)           | |             |_   _|    | |     | | (_)                          
-   | | _ __ | |_ _  __ _  __ _| |_ ___  _ __    | | _ __ | |_ ___| | |_  __ _  ___ _ __   ___ ___ 
-   | || '_ \| __| |/ _` |/ _` | __/ _ \| '__|   | || '_ \| __/ _ \ | | |/ _` |/ _ \ '_ \ / __/ _ \\
-  _| || | | | |_| | (_| | (_| | || (_) | |     _| || | | | ||  __/ | | | (_| |  __/ | | | (_|  __/
-  \___/_| |_|\__|_|\__, |\__,_|\__\___/|_|     \___/_| |_|\__\___|_|_|_|\__, |\___|_| |_|\___\___|
-                    __/ |                                                __/ |                    
-                   |___/                                                |___/                     
-
+ _____          _ _           _               _____      _       _ _ _                           
+|_   _|        | (_)         | |             |_   _|    | |     | | (_)                          
+  | | _ __   __| |_  ___ __ _| |_ ___  _ __    | | _ __ | |_ ___| | |_  __ _  ___ _ __   ___ ___ 
+  | || '_ \ / _` | |/ __/ _` | __/ _ \| '__|   | || '_ \| __/ _ \ | | |/ _` |/ _ \ '_ \ / __/ _ \\
+ _| || | | | (_| | | (_| (_| | || (_) | |     _| || | | | ||  __/ | | | (_| |  __/ | | | (_|  __/
+ \___/_| |_|\__,_|_|\___\__,_|\__\___/|_|     \___/_| |_|\__\___|_|_|_|\__, |\___|_| |_|\___\___|
+                                                                        __/ |                    
+                                                                       |___/                     
 Author : OsmanKandemir
 
 {bcolors.ENDC}""")
-
-
-
 
 
 
@@ -65,7 +69,7 @@ class LinkExtractor:
 		extractor = URLExtract()
 		try:
 			headers = {'User-agent': 'Mozilla/5.0'}
-			grab = requests.get(urls,proxies=self.proxy_servers,headers=headers,timeout=(2))
+			grab = requests.get(urls,proxies=self.proxy_servers,headers=headers,timeout=(10))
 			if grab.status_code == 200:
 				soup = BeautifulSoup(grab.content, 'html.parser',from_encoding="iso-8859-1")
 				AllUrls = []

@@ -7,7 +7,7 @@ class log:
 
 def time():
     from datetime import datetime
-    return datetime.utcnow().strftime("%Y %H:%M:%S")
+    return datetime.utcnow().strftime("%B %d %Y - %H:%M:%S")
 
 
 def msg(m):
