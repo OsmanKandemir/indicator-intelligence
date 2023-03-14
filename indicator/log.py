@@ -1,14 +1,16 @@
 
 from functions import bcolors
+from datetime import datetime
 
 class log:
     info = "[INF]"
 
 
 def time():
-    from datetime import datetime
     return datetime.utcnow().strftime("%B %d %Y - %H:%M:%S")
 
+def worktime():
+    return datetime.utcnow().strftime('%Y%m%d%H%M%S%f')
 
 def msg(m):
     ti = " , "

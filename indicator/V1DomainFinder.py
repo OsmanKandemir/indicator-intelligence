@@ -30,27 +30,27 @@ async def resolve_domain(resolver:aiodns.DNSResolver, domain:str) -> str:
         return ""
 
 
-def Remove():
-    Path = PATH + "/data.log"
+def Remove(worktime:str):
+    Path = PATH + "/"+ worktime+"_data.log"
     if os.path.isfile(Path):
         os.remove(Path)
     else:
         pass
 
-def SaveData(data):
+def SaveData(data:str,worktime:str):
     try: 
-        with open("data.log","a+") as File:
+        with open(worktime + "_data.log","a+") as File:
             for domain in data:
                 File.write(domain + "\n")
         File.close()
     except:
         pass
 
-def ReadData() -> list:
+def ReadData(worktime:str) -> list:
     try: 
-        with open("data.log","r") as File:
+        with open(worktime + "_data.log","r") as File:
             Data = [domain.strip() for domain in File.readlines()]
-            Remove()
+            Remove(worktime)
             try:
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
@@ -62,7 +62,7 @@ def ReadData() -> list:
         pass
 
 
-def DomainIndicator(data:list) -> None:
+def DomainIndicator(data:list,worktime:str) -> None:
     Domains = []
     for url in data:
         if not Eliminate(url):
@@ -73,7 +73,7 @@ def DomainIndicator(data:list) -> None:
                 Domains.append('{}.{}'.format(RemoveSlash(extR.domain),RemoveSlash(extR.suffix)))
         else:
             continue
-    SaveData(list(set(Domains)))
+    SaveData(list(set(Domains)),worktime)
 
 
 

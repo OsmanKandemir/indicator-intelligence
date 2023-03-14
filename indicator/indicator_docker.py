@@ -8,7 +8,10 @@ from urlextract import URLExtract
 import requests,sys,re,tldextract
 from multiprocessing import Pool
 import threading, queue
-from log import msg
+from log import (
+				msg,
+				worktime
+				)
 import argparse
 
 from V1DomainFinder import	(
@@ -59,9 +62,9 @@ class LinkExtractor:
 
 
 
-	def __init__(self,urls:list,workspacename:str,proxy_servers:dict,agent:str):
+	def __init__(self,urls:list,worktime:str,proxy_servers:dict,agent:str):
 		self.urls_ = urls
-		self.workspacename_ = workspacename
+		self.worktime_ = worktime
 		self.proxy_servers = proxy_servers
 		self.agent =  {'User-agent':agent if agent else 'Mozilla/5.0'}
 
@@ -73,7 +76,7 @@ class LinkExtractor:
 			if grab.status_code == 200:
 				soup = BeautifulSoup(grab.content, 'html.parser',from_encoding="iso-8859-1")
 				AllUrls = []
-				DomainIndicator(extractor.find_urls(grab.text))
+				DomainIndicator(extractor.find_urls(grab.text),self.worktime_)
 				#'base','form'
 				for link in soup.find_all(['a', 'link']):
 					data = link.get('href')
@@ -135,8 +138,7 @@ class LinkExtractor:
 			#return Merge(results[0]), ReadData()
 			
 			del threads[:]
-
-			return ReadData()
+			return ReadData(self.worktime_)
 		except:
 			msg(f"{bcolors.OKBLUE}Undefined Domain or Connection Error.{bcolors.ENDC}")
 
@@ -145,20 +147,20 @@ class LinkExtractor:
 		return self.urls_
 	
 	@property
-	def workspacename(self) -> str:
-		return self.workspacename_
+	def worktime(self) -> str:
+		return self.worktime_
 	
 	def __str__(self):
 		return f"LinkExtractor"
 
 	def __repr__(self):
-		return 'LinkExtractor(urls_=' + str(self.urls_) + ' ,workspacename_=' + self.workspacename_ + ')'
+		return 'LinkExtractor(urls_=' + str(self.urls_) + ' ,workspacename_=' + self.worktime_ + ')'
 
 
 def Indicator(domains,proxy_servers,agent):
+	#msg(LinkExtractor(RegX(urls),"worktime").Run())
 
-	#msg(LinkExtractor(RegX(urls),"Workspacename").Run())
-	LinkExtractor(RegX(domains),"Workspacename",proxy_servers,agent).Run()
+	LinkExtractor(RegX(domains),worktime(),proxy_servers,agent).Run()
 
 def STARTS():
 
