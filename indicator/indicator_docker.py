@@ -1,4 +1,4 @@
-import requests,sys,re,tldextract,argparse
+import requests,sys,re,tldextract,argparse,random
 from urlextract import URLExtract
 from multiprocessing import Pool
 import threading, queue
@@ -57,24 +57,27 @@ Author : OsmanKandemir
 
 {bcolors.ENDC}""")
 
-
+    #PROXY Düzeltmesinden Devam Et.
+    # proxies = {
+      # "http": "http://10.10.1.10:3128",
+      # 	"https": "https://10.10.1.10:1080",
+    # }
+    # requests.get("http://example.org", proxies=proxies)
 
 class LinkExtractor:
 
-
-
-    def __init__(self,urls:list,worktime:str,proxy_servers:dict,agent:str,json:str):
+    def __init__(self,urls:list,worktime:str,proxy_servers:list,agent:str,json:str):
+    
         self.urls_ = urls
         self.worktime_ = worktime
-        self.proxy_servers = {"http" : proxy for proxy in proxy_servers}
-        self.agent =  {'User-agent':agent if agent else 'Mozilla/5.0'}
+        self.proxy_servers = [{"http" : proxy if "http://" in proxy else "http://" + proxy} for proxy in proxy_servers]
+        self.agent =  {'User-agent' : agent if agent else 'Mozilla/5.0'}
         self.json = json
-
     
     def Test(self,urls:str) -> list:
         extractor = URLExtract()
         try:
-            grab = requests.get(urls,proxies=self.proxy_servers,headers=self.agent,timeout=(2))
+            grab = requests.get(urls,proxies=random.choice(self.proxy_servers),headers=self.agent,timeout=(10))
             if grab.status_code == 200:
                 soup = BeautifulSoup(grab.content, 'html.parser',from_encoding="iso-8859-1")
                 AllUrls = []
@@ -103,6 +106,7 @@ class LinkExtractor:
                 pass
         except ConnectionError as Error:
             msg(f"{bcolors.OKBLUE}{Error.__class__.__name__}{bcolors.ENDC}")
+            pass
         except:
             pass
         
@@ -168,26 +172,20 @@ def STARTS():
     proxy = set()
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d","--domains", nargs='+', required="True", help="Input Targets. --domains sample.com sample2.com")
-    parser.add_argument("-p","--proxies", nargs='+', help="Use proxy. --proxies 0.0.0.0:80 1.1.1.1:8080")
+    parser.add_argument("-d","--domains", nargs='+', required="True", help="Input Targets. --domains sample.com sample2.com ")
+    parser.add_argument("-p","--proxies", nargs='+', help="Use HTTP proxies. --proxies 0.0.0.0:80 1.1.1.1:8080")
     parser.add_argument("-a","--agent", help="Use agent. --agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' ")
-    parser.add_argument("-o","--json", help="JSON output. --json result.txt")
+    parser.add_argument("-o","--json", help="JSON output. --json result.txt ")
     args = parser.parse_args()
 
 
     if args.domains:domains = [domain for domain in args.domains]
-    if args.proxies:proxy = {"http" : proxy for proxy in args.proxies}
-    #PROXY Düzeltmesinden Devam Et.
-    # proxies = {
-      # "http": "http://10.10.1.10:3128",
-      # 	"https": "https://10.10.1.10:1080",
-    # }
-    # requests.get("http://example.org", proxies=proxies)
-
-    agent = args.agent if args.agent else False
-    json = args.json if args.json else False
+    proxy = args.proxies if args.proxies else None
+    agent = args.agent if args.agent else None
+    json = args.json if args.json else None
     
     
+    #PROXY Feature'dan Devam edilecek.Hatalar var.
     
 
 
