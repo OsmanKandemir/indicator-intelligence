@@ -10,7 +10,7 @@
 
 ## Data Collection and Usage
 
-- By using our application, you allow us to collect and use your domain information. Please review our privacy policy to learn what type of information we collect and how we use it.
+- By using our application, you allow us to collect and use your domain information.
 - The data collected during the use of our application will only be used for development and improvement purposes.
 
 
