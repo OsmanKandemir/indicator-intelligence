@@ -21,13 +21,13 @@ Indicator-Intelligence collects static files and related domains for target to d
 
 #### NOTE : You should definitely use it for legal penetrations tests. Responsibility belongs to user.
 
-##### Web Scraping for GDPR 
+##### GDPR 
 
 ```
 Unless you have the person's explicit consent it is now illegal to scrape an EU resident's personal data under GDPR.
 ```
 
-##### Web Scraping for KVKK
+##### KVKK
 
 ```
 KVKK is a law in Turkey that regulates the processing, storage, and use of personal data. According to Article 6 of KVKK, obtaining explicit consent from the relevant individuals is required for the processing of personal data.
