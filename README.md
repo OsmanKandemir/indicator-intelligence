@@ -18,7 +18,7 @@
 
 Indicator-Intelligence collects static files and related domains for target to do threat analysis.
 
-### NOTE : You should definitely use it for legal penetrations tests. Responsibility belongs to user.
+##### NOTE : You should definitely use it for legal penetrations tests. Responsibility belongs to user.
 
 Fundamental logic method is similar to IOC.
 
