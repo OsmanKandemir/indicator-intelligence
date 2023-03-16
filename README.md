@@ -13,7 +13,7 @@
 
 # Indicator-Intelligence
 
-###### NOTE : You should definitely use it for legal penetration tests. Please See; [USAGE_POLICY.md](USAGE_POLICY.md) [LICENSE.md](LICENSE.md)
+###### NOTE : You should definitely use it for legal activities. Please See; [USAGE_POLICY.md](USAGE_POLICY.md) [LICENSE.md](LICENSE.md)
 
 ## Description
 
