@@ -18,12 +18,26 @@
 
 Indicator-Intelligence collects static files and related domains for target to do threat analysis.
 
+
 #### NOTE : You should definitely use it for legal penetrations tests. Responsibility belongs to user.
 
-##### Web scraping for GDPR 
+##### Web Scraping for GDPR 
 
-###### Answer: unless you have the person's explicit consent it is now illegal to scrape an EU resident's personal data under GDPR.
+```
+Unless you have the person's explicit consent it is now illegal to scrape an EU resident's personal data under GDPR.
+```
 
+##### Web Scraping for KVKK
+
+```
+KVKK (Law on Protection of Personal Data) is a law in Turkey that regulates the processing, storage, and use of personal data. According to Article 6 of KVKK, obtaining explicit consent from the relevant individuals is required for the processing of personal data.
+
+Web scraping is the process of automatically collecting information from websites. Therefore, web scraping is generally considered illegal under KVKK as explicit consent from the relevant individuals is required for the collection of personal data.
+
+However, in some cases, under Article 5 of KVKK, obtaining explicit consent for the collection and use of personal data may not be necessary. For example, if the information on a website is generally considered to be publicly available, the collection and use of this information may not fall under the scope of KVKK.
+
+Therefore, to determine the legality of web scraping, each situation must be evaluated individually. However, in general, compliance with the rules stated in the terms of use and privacy policy of the relevant website is required for web scraping to be in compliance with KVKK.
+```
 
 Fundamental logic method is similar to IOC.
 
