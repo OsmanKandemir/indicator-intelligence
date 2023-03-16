@@ -15,7 +15,7 @@
 
 
 
-## What is Say Privacy Laws About Web Scraping
+## What Do Privacy Laws Say About Web Scraping ?
 
 ##### GDPR 
 
