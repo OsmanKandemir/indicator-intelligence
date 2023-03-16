@@ -18,7 +18,12 @@
 
 Indicator-Intelligence collects static files and related domains for target to do threat analysis.
 
-##### NOTE : You should definitely use it for legal penetrations tests. Responsibility belongs to user.
+#### NOTE : You should definitely use it for legal penetrations tests. Responsibility belongs to user.
+
+##### Web scraping for GDPR 
+
+###### Answer: unless you have the person's explicit consent it is now illegal to scrape an EU resident's personal data under GDPR.
+
 
 Fundamental logic method is similar to IOC.
 
