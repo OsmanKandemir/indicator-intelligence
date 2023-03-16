@@ -18,6 +18,8 @@
 
 Indicator-Intelligence collects static files and related domains for target to do threat analysis.
 
+Fundamental logic method is similar to IOC.
+
 
 #### NOTE : You should definitely use it for legal penetrations tests. Responsibility belongs to user.
 
@@ -38,8 +40,6 @@ However, in some cases, under Article 5 of KVKK, obtaining explicit consent for 
 
 Therefore, to determine the legality of web scraping, each situation must be evaluated individually. However, in general, compliance with the rules stated in the terms of use and privacy policy of the relevant website is required for web scraping to be in compliance with KVKK.
 ```
-
-Fundamental logic method is similar to IOC.
 
 ## TODO
 - [x] Releated domains collect
