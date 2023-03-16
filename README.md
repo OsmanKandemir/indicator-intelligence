@@ -30,7 +30,7 @@ Unless you have the person's explicit consent it is now illegal to scrape an EU 
 ##### Web Scraping for KVKK
 
 ```
-KVKK (Law on Protection of Personal Data) is a law in Turkey that regulates the processing, storage, and use of personal data. According to Article 6 of KVKK, obtaining explicit consent from the relevant individuals is required for the processing of personal data.
+KVKK is a law in Turkey that regulates the processing, storage, and use of personal data. According to Article 6 of KVKK, obtaining explicit consent from the relevant individuals is required for the processing of personal data.
 
 Web scraping is the process of automatically collecting information from websites. Therefore, web scraping is generally considered illegal under KVKK as explicit consent from the relevant individuals is required for the collection of personal data.
 
