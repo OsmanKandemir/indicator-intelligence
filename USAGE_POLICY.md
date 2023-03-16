@@ -8,10 +8,9 @@
 
 ## Data Collection and Usage
 
-- By using our application, you allow us to collect and use your personal information. Please review our privacy policy to learn what type of information we collect and how we use it.
+- By using our application, you allow us to collect and use your domain information. Please review our privacy policy to learn what type of information we collect and how we use it.
 - The data collected during the use of our application will only be used for development and improvement purposes.
 
 ## Issue Reporting
 
 - If you encounter any issues with our application, please contact us.
-This usage policy outlines important rules for using our application. Please follow these rules.
