@@ -13,7 +13,7 @@
 
 # Indicator-Intelligence
 
-###### NOTE : You should definitely use it for legal penetrations tests. Responsibility belongs to user. See; [SECURITY.md](SECURITY.md)
+###### NOTE : You should definitely use it for legal penetrations tests. Responsibility belongs to user. Please See; [SECURITY.md](SECURITY.md)
 
 ## Description
 
