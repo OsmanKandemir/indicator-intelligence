@@ -1,6 +1,6 @@
 # Security Policy
 
-In general, automatic crawling of websites, i.e. "crawling", is not legally problematic. However, there are some ethical and legal limitations during the collection of the content and data of the websites. Please note. You should definitely use if for legal penetrations tests. Responsibility belongs to user.
+In general, automatic crawling of websites, i.e. "crawling", is not legally problematic. However, there are some ethical and legal limitations during the collection of the content and data of the websites. Please note.
 
 #### NOTE : You should definitely use it for legal penetrations tests. Responsibility belongs to user.
 
