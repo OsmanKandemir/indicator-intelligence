@@ -1,7 +1,11 @@
+
 import requests,sys,re,tldextract,argparse,random
 from urlextract import URLExtract
 from multiprocessing import Pool
 import threading, queue
+
+
+
 from bs4 import (
                 MarkupResemblesLocatorWarning,
                 XMLParsedAsHTMLWarning,
@@ -70,14 +74,14 @@ class LinkExtractor:
     
         self.urls_ = urls
         self.worktime_ = worktime
-        self.proxy_servers = [{"http" : proxy if "http://" in proxy else "http://" + proxy} for proxy in proxy_servers]
+        self.proxy_servers = proxy_servers #[{"http" : proxy if "http://" in proxy else "http://" + proxy} for proxy in proxy_servers]
         self.agent =  {'User-agent' : agent if agent else 'Mozilla/5.0'}
         self.json = json
     
     def Test(self,urls:str) -> list:
         extractor = URLExtract()
         try:
-            grab = requests.get(urls,proxies=random.choice(self.proxy_servers),headers=self.agent,timeout=(10))
+            grab = requests.get(urls,proxies=self.proxy_servers,headers=self.agent,timeout=(10))
             if grab.status_code == 200:
                 soup = BeautifulSoup(grab.content, 'html.parser',from_encoding="iso-8859-1")
                 AllUrls = []

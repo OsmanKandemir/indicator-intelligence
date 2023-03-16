@@ -72,7 +72,7 @@ def RegX(urls:list) -> list:
     assert type(urls) == list
     return ["http://"+re.sub(r"(https?:\/\/)?([w]{3}\.)?(\w*.\w*)([\/\w]*)", "\\3", i, 0, re.MULTILINE | re.IGNORECASE) for i in urls]
 
-def JsonSave(name:str,data:dict):
-    assert [type(name),type(data)] == [str,dict]
+def JsonSave(name:str,data:list):
+    assert [type(name),type(data)] == [str,list]
     with open(name if ".json" in name else name + ".json", "w+") as outfile:
         json.dump(data, outfile)

@@ -19,8 +19,11 @@ async def check_domains(domains:list, json:str) -> dict:
     for domain, result in zip(domains, results): 
         if result:  
             RealRest.append({"DOMAIN":domain,"IPs": result.split(" IPs : ")[1][7:-7].split("', '")})
-    JsonSave(json,RealRest)
-    return print(f"{RealRest}")
+    if json:	
+        JsonSave(json,RealRest)	
+        return print(f"{RealRest}")	
+    else:	
+        pass
 
 async def resolve_domain(resolver:aiodns.DNSResolver, domain:str, json:str) -> str:
     try:
