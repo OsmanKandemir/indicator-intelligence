@@ -5,7 +5,6 @@ import asyncio
 import aiodns
 
 
-
 PATH = os.getcwd() or "/"
 
 
