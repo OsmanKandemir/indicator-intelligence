@@ -59,7 +59,7 @@ You can run this application on a container after build a Dockerfile.
 
 ```
 docker build -t indicator .
-docker run indicator --domain http://google.com
+docker run indicator --domains google.com facebook.com
 
 ```
 
@@ -74,17 +74,9 @@ from indicator import Indicator
 Indicator(["http://google.com"])
 ```
 
-
-## Resources
-
-- https://resources.infosecinstitute.com/topic/threat-hunting-for-file-hashes-as-an-ioc/
-- https://abnormalsecurity.com/glossary/indicators-of-compromise
-
-
 ## Development and Contribution
 
 See; [CONTRIBUTING.md](CONTRIBUTING.md)
-
 
 
 ## License
