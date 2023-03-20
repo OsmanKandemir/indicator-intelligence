@@ -21,6 +21,8 @@ Indicator-Intelligence collects static files and related domains for target to d
 
 Fundamental logic method is similar to IOC.
 
+![](https://github.com/OsmanKandemir/test.gif)
+
 
 ## TODO
 - [x] Releated domains collect
