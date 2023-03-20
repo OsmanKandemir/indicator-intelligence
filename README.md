@@ -21,7 +21,7 @@ Indicator-Intelligence collects static files and related domains for target to d
 
 Fundamental logic method is similar to IOC.
 
-![](https://github.com/OsmanKandemir/indicator-intelligence/blob/main/test.gif)
+![](test.gif)
 
 
 ## TODO
