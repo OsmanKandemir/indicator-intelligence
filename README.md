@@ -13,7 +13,7 @@
 
 # Indicator-Intelligence
 
-#### NOTE : You should definitely use it for legal activities. Please See; [USAGE_POLICY.md](USAGE_POLICY.md) [LICENSE](LICENSE)
+#### NOTE : You should definitely use it for legal activities. Please See; [USAGE_POLICY.md](USAGE_POLICY.md) [LICENSE.md](LICENSE.md)
 
 ## Description
 
@@ -67,13 +67,19 @@ docker run indicator --domains google.com facebook.com
 
 ## Usage
 
-Save the result after the first scan starts. 
-Save the second result after start second scan. Compare and analysis results.
+```
+-d DOMAINS [DOMAINS ...], --domains DOMAINS [DOMAINS ...] Input Targets. --domains sample.com sample2.com
+-p PROXY, --proxy PROXY Use HTTP proxy. --proxy 0.0.0.0:8080
+-a AGENT, --agent AGENT Use agent. --agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+-o JSON, --json JSON  JSON output. --json result.json
+```
+
+# Pypi
 
 ```
 from indicator import Indicator
 
-Indicator(["http://google.com"])
+Indicator(["google.com"])
 ```
 
 ## Development and Contribution
@@ -84,7 +90,7 @@ See; [CONTRIBUTING.md](CONTRIBUTING.md)
 ## License
 
 Copyright (c) 2023 Osman Kandemir \
-Licensed under the MIT License.
+Licensed under the GPL-3.0 License.
 
 ## Donations
 If you like Indicator-Intelligence and would like to show support, you can Buy A Coffee for the developer using the button below
