@@ -4,6 +4,8 @@ from functions import bcolors
 import threading, queue
 #OK
 
+#DEACTIVATE - Upcoming FEATURE
+
 BUF_SIZE = 60000
 
 
@@ -69,5 +71,5 @@ def HASH(Files):
     return HashCalculator(Files).Run()
 
 if __name__ == '__main__':
-    #print(HASH(["indicator.py","log.py","functions.py"]))
+    #print(HASH(["bla.test"]))
     sys.exit()

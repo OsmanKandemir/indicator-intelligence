@@ -65,7 +65,7 @@ class LinkExtractor:
         self.proxy_servers = proxy_servers
 
     
-    def Test(self,urls:str) -> list:
+    def Crawling(self,urls:str) -> list:
         extractor = URLExtract()
         try:
             headers = {'User-agent': 'Mozilla/5.0'}
@@ -106,10 +106,10 @@ class LinkExtractor:
         Tst = []
         msg(f"{bcolors.OKBLUE}Indicator is pulling to static links from Target.{bcolors.ENDC}")
         try:
-            res = self.Test(url)
+            res = self.Crawling(url)
             res = list(set(res))
             for i,z in zip(range(1,len(res)),res):
-                res = self.Test(z)
+                res = self.Crawling(z)
                 Tst.append(res)
             results_queue.put(Tst)
         except Exception as Error:

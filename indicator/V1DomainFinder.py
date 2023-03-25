@@ -1,13 +1,11 @@
 import requests,sys,re,tldextract,os
-from functions import Eliminate,RemoveSlash,bcolors,JsonSave
+from functions import Eliminate,RemoveSlash,bcolors,JsonSave,SpecialCharacters
 from log import msg
 import asyncio
 import aiodns
 
 
 PATH = os.getcwd() or "/"
-
-
 
 async def check_domains(domains:list, json:str) -> dict:
     RealRest = []
@@ -68,18 +66,23 @@ def ReadData(worktime:str,json:str) -> list:
         msg(f"{bcolors.OKBLUE}Data.log Error{bcolors.ENDC}")
         pass
 
-
 def DomainIndicator(data:list,worktime:str) -> None:
     Domains = []
     for url in data:
-        if not Eliminate(url):
-            extR = tldextract.extract(url)
-            if extR.subdomain:
-                Domains.append('{}.{}.{}'.format(RemoveSlash(extR.subdomain),RemoveSlash(extR.domain),RemoveSlash(extR.suffix)))
+        if not SpecialCharacters(url):
+            if not Eliminate(url):
+                extR = tldextract.extract(url)
+                if extR.subdomain:
+                    if not len(extR.subdomain) == 1:
+                        Domains.append('{}.{}.{}'.format(RemoveSlash(extR.subdomain),RemoveSlash(extR.domain),RemoveSlash(extR.suffix)))
+                else:
+                    if not len(extR.domain) == 1:
+                        Domains.append('{}.{}'.format(RemoveSlash(extR.domain),RemoveSlash(extR.suffix)))
             else:
-                Domains.append('{}.{}'.format(RemoveSlash(extR.domain),RemoveSlash(extR.suffix)))
+                continue
         else:
             continue
+
     SaveData(list(set(Domains)),worktime)
 
 

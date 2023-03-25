@@ -13,8 +13,10 @@ SOCIAL_MEDIA_EXIST_OR_NOT_EXIST = [
                 "twitch.com","discord.com","vk.com",
                 "vimeo.com","zoom.com",
                 "slideshare.com","flickr.com",
-                "pinterest.com","meetup.com"
+                "pinterest.com","meetup.com",
                 ]
+
+
 
 class bcolors:
     HEADER = '\033[95m'
@@ -33,13 +35,11 @@ class bcolors:
         self.ENDC = ''
 
 def Eliminate(value:str) -> bool:
-    assert type(value) == str
     for i in SOCIAL_MEDIA_EXIST_OR_NOT_EXIST:
         if i in value:return True
     return False
 
 def Merge(lst:list) -> list:
-    assert type(lst) == list
     New = []
     for ilst in lst:
         if ilst != None:
@@ -47,13 +47,10 @@ def Merge(lst:list) -> list:
     return list(set(New))
     
 def EmailIndicator(text:str) -> list:
-    assert type(text) == str
     pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     return list(set(re.findall(pattern, text)))
 
 def RemoveSlash(name:str) -> str:
-    assert type(name) == str
-    #if name[-1:] == ".":name = name[:-1]
     replacing_multiple_chars = [('u002F', ''), ('/', '')]
     for char, i in replacing_multiple_chars:
         if char in name:
@@ -61,7 +58,6 @@ def RemoveSlash(name:str) -> str:
     return name.lower()
 
 def MultiProcessingTasks(urls:list) -> list:
-    assert type(urls) == list
     queue = []
     for i in urls:queue.append((i))
     with Pool() as pool:
@@ -69,10 +65,14 @@ def MultiProcessingTasks(urls:list) -> list:
     return L
 
 def RegX(urls:list) -> list:
-    assert type(urls) == list
     return ["http://"+re.sub(r"(https?:\/\/)?([w]{3}\.)?(\w*.\w*)([\/\w]*)", "\\3", i, 0, re.MULTILINE | re.IGNORECASE) for i in urls]
 
+def SpecialCharacters(url:str) -> bool:
+    lst = [","]
+    for one in lst:
+        if one in url:return True
+        else:return False
+        
 def JsonSave(name:str,data:list):
-    assert [type(name),type(data)] == [str,list]
     with open(name if ".json" in name else name + ".json", "w+") as outfile:
         json.dump(data, outfile)
