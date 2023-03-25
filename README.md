@@ -79,7 +79,6 @@ docker run indicator --domains google.com facebook.com
 from indicator import Indicator
 
 #SCAN
-
 Indicator(["domain.com"])
 
 #OUTPUT

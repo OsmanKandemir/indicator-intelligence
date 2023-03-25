@@ -4,7 +4,7 @@ from functions import bcolors
 import threading, queue
 #OK
 
-#DEACTIVATE - Upcoming FEATURE
+#DEACTIVATE
 
 BUF_SIZE = 60000
 

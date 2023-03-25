@@ -1,13 +1,20 @@
 import requests,sys,re,tldextract,os
-from functions import Eliminate,RemoveSlash,bcolors,JsonSave,SpecialCharacters
 from log import msg
 import asyncio
 import aiodns
 
+from functions import	(
+                        Eliminate,
+                        RemoveSlash,
+                        bcolors,
+                        SpecialCharacters,
+                        JsonSave
+                        )
+
 
 PATH = os.getcwd() or "/"
 
-async def check_domains(domains:list, json:str) -> dict:
+async def check_domains(domains:list, json:str, worktime:str) -> dict:
     RealRest = []
     resolver = aiodns.DNSResolver()
     msg(f"{bcolors.OKBLUE} Fetching Related Domains.{bcolors.ENDC}" )
@@ -16,8 +23,8 @@ async def check_domains(domains:list, json:str) -> dict:
     for domain, result in zip(domains, results): 
         if result:  
             RealRest.append({"DOMAIN":domain,"IPs": result.split(" IPs : ")[1][7:-7].split("', '")})
-    if json:	
-        JsonSave(json,RealRest)	
+    if json:
+        JsonSave(worktime,RealRest)
         return print(f"{RealRest}")	
     else:	
         pass
@@ -59,7 +66,7 @@ def ReadData(worktime:str,json:str) -> list:
             try:
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
-                loop.run_until_complete(check_domains(list(set(Data)),json))
+                loop.run_until_complete(check_domains(list(set(Data)),json,worktime))
             except KeyboardInterrupt:
                 pass
     except:

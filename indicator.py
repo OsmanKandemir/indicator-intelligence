@@ -4,7 +4,7 @@ from urlextract import URLExtract
 from multiprocessing import Pool
 import threading, queue
 
-PATH = os.getcwd()
+PATH = os.path.abspath(os.path.dirname(__file__))
 
 sys.path.insert(1,PATH + "/indicator/")
 
@@ -20,7 +20,8 @@ from functions import	(
                         EmailIndicator,
                         Eliminate,
                         Merge,
-                        RegX
+                        RegX,
+                        JsonRead
                         )
 
 
@@ -43,6 +44,7 @@ import warnings
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
 
+
 print(f"""{bcolors.OKGREEN}
 
   _____           _ _           _               _____       _       _ _ _                           
@@ -56,6 +58,7 @@ print(f"""{bcolors.OKGREEN}
 Author : OsmanKandemir
 
 {bcolors.ENDC}""")
+
 
 class LinkExtractor():
 
@@ -104,8 +107,8 @@ class LinkExtractor():
                         
                 return list(set(AllUrls))
 
-            elif grab.status_code in [409,500,502]:
-                msg(f"{bcolors.OKBLUE}Proxy Connection Error{bcolors.ENDC}")
+            elif grab.status_code in [500,502,503,504]:
+                msg(f"{bcolors.OKBLUE}Connection Error{bcolors.ENDC}")
             else:
                 pass
         except ConnectionError as Error:
@@ -178,7 +181,13 @@ class LinkExtractor():
 
 
 def Indicator(domains, proxy_server = None, agent = None, json = None):
-    LinkExtractor(RegX(domains),worktime(),proxy_server,agent,json).Run()
+    work = worktime()
+    LinkExtractor(RegX(domains),work,proxy_server,agent,json).Run()
+    try:
+        return JsonRead(work)
+    except:
+        return []
+
 
 def STARTS():
 
@@ -186,7 +195,7 @@ def STARTS():
     parser.add_argument("-d","--domains", nargs='+', required="True", help="Input Targets. --domains sample.com sample2.com ")
     parser.add_argument("-p","--proxy", help="Use HTTP proxy. --proxy 0.0.0.0:8080")
     parser.add_argument("-a","--agent", help="Use agent. --agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' ")
-    parser.add_argument("-o","--json", help="JSON output. --json result.json ")
+    parser.add_argument("-o","--json", action = "store_true", help="JSON output. --json")
     args = parser.parse_args()
 
     proxy = set()
@@ -197,7 +206,6 @@ def STARTS():
     json = args.json if args.json else None
     
     Indicator(domains,proxy,agent,json)
-
 
 if __name__ == "__main__":
     STARTS()

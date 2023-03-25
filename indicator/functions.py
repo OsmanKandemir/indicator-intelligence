@@ -1,4 +1,4 @@
-import re,json
+import re,json,os
 from multiprocessing import Pool
 import threading, queue
 
@@ -16,7 +16,7 @@ SOCIAL_MEDIA_EXIST_OR_NOT_EXIST = [
                 "pinterest.com","meetup.com",
                 ]
 
-
+PATH = os.getcwd() or "/"
 
 class bcolors:
     HEADER = '\033[95m'
@@ -73,6 +73,15 @@ def SpecialCharacters(url:str) -> bool:
         if one in url:return True
         else:return False
         
-def JsonSave(name:str,data:list):
+def JsonSave(name:str,data):
     with open(name if ".json" in name else name + ".json", "w+") as outfile:
         json.dump(data, outfile)
+
+def JsonRead(name:str) -> list:
+    try:
+        with open(name + ".json","r") as File:
+            data = File.readlines()
+            os.remove(PATH + "/"+ name+".json")
+            return data
+    except:
+        return []
