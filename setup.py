@@ -5,7 +5,7 @@ import os
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 VERSION = '1.0.1'
-DESCRIPTION = 'Indicator Intelligence'
+DESCRIPTION = 'IndicatorIntelligence'
 # Setting up
 setup(
     name="indicator-intelligence",
@@ -43,10 +43,10 @@ setup(
 
     ],
     license="",
-    keywords=['python', 'threat', 'threat-intelligence','indicator'],
+    keywords=['python', 'threat','threat-intelligence','intelligence','indicator'],
     classifiers=[
     
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Topic :: Software Development :: Build Tools",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",

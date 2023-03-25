@@ -47,12 +47,6 @@ The script is [available on PyPI](https://pypi.org/project/indicator-intelligenc
 ```
 pip install indicator-intelligence
 ```
-### From Poetry
-
-```
-pip install poetry
-poetry install
-```
 
 ### From Dockerfile
 
@@ -61,8 +55,6 @@ You can run this application on a container after build a Dockerfile.
 ```
 docker build -t indicator .
 docker run indicator --domains target.com --json
-
-
 ```
 
 ### From DockerHub
@@ -72,6 +64,12 @@ docker pull osmankandemir/indicator
 docker run osmankandemir/indicator --domains target.com --json
 ```
 
+### From Poetry
+
+```
+pip install poetry
+poetry install
+```
 
 ## Usage
 

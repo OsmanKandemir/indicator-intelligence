@@ -22,4 +22,3 @@ git add .
 git commit -m "added changes #<issue-id>"
 git push origin you-#<issue-id>
 ```
-#### Create new Pull Request
