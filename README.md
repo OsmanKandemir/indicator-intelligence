@@ -60,11 +60,6 @@ You can run this application on a container after build a Dockerfile.
 
 ```
 docker build -t indicator .
-
-docker run indicator --domains target.com
-
-or
-
 docker run indicator --domains target.com --json
 
 
@@ -74,11 +69,6 @@ docker run indicator --domains target.com --json
 
 ```
 docker pull osmankandemir/indicator
-
-docker run osmankandemir/indicator --domains target.com
-
-or
-
 docker run osmankandemir/indicator --domains target.com --json
 ```
 
