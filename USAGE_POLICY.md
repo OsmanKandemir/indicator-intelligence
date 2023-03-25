@@ -20,15 +20,7 @@
 ##### GDPR 
 
 ```
-The General Data Protection Regulation (GDPR) is a regulation on the processing and protection of personal data in the European Union. GDPR states that web scraping activities are subject to this regulation.
-
-Web scraping is the process of automatically collecting data from a website. This process is considered as the collection and processing of personal data within the scope of GDPR. Therefore, those who want to collect data from websites covered by GDPR must first act in compliance with this regulation.
-
-GDPR introduces certain rules for the collection, processing, and storage of personal data. These rules include informing the data subject, obtaining explicit consent, limiting the processing of data, ensuring data security, and protecting the rights of data subjects. Compliance with these rules enables web scraping activities to be legally performed under GDPR.
-
-Those who want to do web scraping must first determine a clear and understandable policy on which data will be collected, how this data will be used and stored. In addition, they need to determine whether the data to be collected falls under the scope of personal data within GDPR and obtain the necessary permissions for processing this data.
-
-Compliance with GDPR is important for web scrapers because non-compliant data collection activities can lead to serious fines and legal issues.
+The General Data Protection Regulation (GDPR) is a regulation on the processing and protection of personal data in the European Union. GDPR states that web scraping activities are subject to this regulation. Web scraping is the process of automatically collecting data from a website. This process is considered as the collection and processing of personal data within the scope of GDPR. Therefore, those who want to collect data from websites covered by GDPR must first act in compliance with this regulation. GDPR introduces certain rules for the collection, processing, and storage of personal data. These rules include informing the data subject, obtaining explicit consent, limiting the processing of data, ensuring data security, and protecting the rights of data subjects. Compliance with these rules enables web scraping activities to be legally performed under GDPR. Those who want to do web scraping must first determine a clear and understandable policy on which data will be collected, how this data will be used and stored. In addition, they need to determine whether the data to be collected falls under the scope of personal data within GDPR and obtain the necessary permissions for processing this data. Compliance with GDPR is important for web scrapers because non-compliant data collection activities can lead to serious fines and legal issues.
 ```
 
 ##### KVKK
