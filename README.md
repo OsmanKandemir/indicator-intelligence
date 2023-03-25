@@ -60,9 +60,27 @@ You can run this application on a container after build a Dockerfile.
 
 ```
 docker build -t indicator .
-docker run indicator --domains google.com facebook.com
+
+docker run indicator --domains target.com
+
+or
+
+docker run indicator --domains target.com --json
+
 
 ```
+
+### From DockerHub
+
+docker pull osmankandemir/indicator
+
+docker run osmankandemir/indicator --domains target.com
+
+or
+
+docker run osmankandemir/indicator --domains target.com --json
+
+
 
 ## Usage
 
