@@ -70,7 +70,7 @@ docker run indicator --domains google.com facebook.com
 -d DOMAINS [DOMAINS], --domains DOMAINS [DOMAINS] Input Targets. --domains sample.com sample2.com
 -p PROXY, --proxy PROXY Use HTTP proxy. --proxy 0.0.0.0:8080
 -a AGENT, --agent AGENT Use agent. --agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
--o JSON, --json JSON  JSON output. --json result.json
+-o JSON, --json JSON  JSON output. --json
 ```
 
 #### Pypi
@@ -78,7 +78,12 @@ docker run indicator --domains google.com facebook.com
 ```
 from indicator import Indicator
 
-Indicator(["google.com"])
+#SCAN
+
+Indicator(["domain.com"])
+
+#OUTPUT
+Indicator(["domain.com"],json=True)
 ```
 
 ## Development and Contribution
