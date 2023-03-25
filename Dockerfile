@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.9-slim-buster
 LABEL Maintainer="OsmanKandemir"
 COPY . /app
 WORKDIR /app
@@ -8,4 +8,4 @@ ENTRYPOINT ["python", "indicator.py"]
 
 
 #docker build -t indicator .
-#docker run indicator --domain google.com
+#docker run indicator --domains domain.com --json
