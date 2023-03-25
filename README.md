@@ -72,6 +72,7 @@ docker run indicator --domains target.com --json
 
 ### From DockerHub
 
+```
 docker pull osmankandemir/indicator
 
 docker run osmankandemir/indicator --domains target.com
@@ -79,7 +80,7 @@ docker run osmankandemir/indicator --domains target.com
 or
 
 docker run osmankandemir/indicator --domains target.com --json
-
+```
 
 
 ## Usage
