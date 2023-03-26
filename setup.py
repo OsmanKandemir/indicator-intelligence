@@ -5,7 +5,7 @@ import os
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 VERSION = '1.0.1'
-DESCRIPTION = 'Indicator-Intelligence collects static files and related domains for target to do for threat intelligence.'
+DESCRIPTION = 'Indicator-Intelligence finds related domains for target to do threat analysis.'
 # Setting up
 setup(
     name="indicator-intelligence",
@@ -42,7 +42,6 @@ setup(
         "uritools==4.0.1",
         "urlextract==1.8.0",
         "urllib3==1.26.14"
-
     ],
     license="",
     keywords=['python', 'threat','threat-intelligence','intelligence','indicator'],
@@ -65,7 +64,6 @@ setup(
         "Intended Audience :: SOC Specialists",
         "Intended Audience :: Cyber Security Specialists",
         "Intended Audience :: Cyber Security Analysts"
-
 
     ],
     python_requires='>=3.9',
