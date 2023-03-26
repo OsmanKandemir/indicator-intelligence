@@ -8,4 +8,4 @@ ENTRYPOINT ["python", "indicator.py"]
 
 
 #docker build -t indicator .
-#docker run indicator --domains domain.com --json
+#docker run indicator --domains target-web.com --json
