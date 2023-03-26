@@ -24,12 +24,8 @@ Indicator-Intelligence collects static files and related domains for target to d
 ![](imgtest.png)
 
 
-## TODO
+## Done
 - [x] Releated domains collect
-- [ ] Email, Ipv4, Ipv6 collect
-- [ ] Result compare structure with Django
-- [ ] Quick crawling optimization and more indicators
-- [ ] Calculates hashes to threat analysis
 
 ## Installation
 
