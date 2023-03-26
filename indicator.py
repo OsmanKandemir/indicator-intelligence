@@ -120,7 +120,7 @@ class LinkExtractor():
 
     def Start(self,url:str,results_queue:queue.Queue):
         Tst = []
-        msg(f"{bcolors.OKBLUE}Indicator is pulling to static links from Target.{bcolors.ENDC}")
+        msg(f"{bcolors.OKBLUE}Indicator is pulling to static links from target.{bcolors.ENDC}")
         try:
             res = self.Crawling(url)
             res = list(set(res))
@@ -154,7 +154,7 @@ class LinkExtractor():
             return ReadData(self.worktime_,self.json_)
             
         except Exception as Error:
-            msg(f"{bcolors.OKBLUE}Undefined Domain or Connection Error.{bcolors.ENDC} {Error}")
+            msg(f"{bcolors.OKBLUE}Undefined domain or connection error.{bcolors.ENDC}")
 
     @property
     def urls(self) -> list:

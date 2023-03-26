@@ -17,7 +17,7 @@ PATH = os.getcwd() or "/"
 async def check_domains(domains:list, json:str, worktime:str) -> dict:
     RealRest = []
     resolver = aiodns.DNSResolver()
-    msg(f"{bcolors.OKBLUE} Fetching Related Domains.{bcolors.ENDC}" )
+    msg(f"{bcolors.OKBLUE} Fetching related domains.{bcolors.ENDC}" )
     tasks = [asyncio.ensure_future(resolve_domain(resolver, domain, json)) for domain in domains]
     results = await asyncio.gather(*tasks)
     for domain, result in zip(domains, results): 
