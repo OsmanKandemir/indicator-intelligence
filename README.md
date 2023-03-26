@@ -88,10 +88,10 @@ poetry install
 from indicator import Indicator
 
 #SCAN
-Indicator(["domain.com"])
+Indicator(["target-web.com"])
 
 #OUTPUT
-Indicator(["domain.com"],json=True)
+Indicator(["target-web.com"],json=True)
 ```
 
 ## Development and Contribution
