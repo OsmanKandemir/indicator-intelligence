@@ -56,14 +56,14 @@ You can run this application on a container after build a Dockerfile.
 
 ```
 docker build -t indicator .
-docker run indicator --domains target.com --json
+docker run indicator --domains target-web.com --json
 ```
 
 ### From DockerHub
 
 ```
 docker pull osmankandemir/indicator
-docker run osmankandemir/indicator --domains target.com --json
+docker run osmankandemir/indicator --domains target-web.com --json
 ```
 
 ### From Poetry
@@ -76,7 +76,7 @@ poetry install
 ## Usage
 
 ```
--d DOMAINS [DOMAINS], --domains DOMAINS [DOMAINS] Input Targets. --domains sample.com sample2.com
+-d DOMAINS [DOMAINS], --domains DOMAINS [DOMAINS] Input Targets. --domains target-web1.com target-web2.com
 -p PROXY, --proxy PROXY Use HTTP proxy. --proxy 0.0.0.0:8080
 -a AGENT, --agent AGENT Use agent. --agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
 -o JSON, --json JSON  JSON output. --json
