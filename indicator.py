@@ -129,7 +129,7 @@ class LinkExtractor():
                 Tst.append(res)
             results_queue.put(Tst)
         except Exception as Error:
-            msg(f"{bcolors.OKBLUE}Thread - Connection Error or {Error}{bcolors.ENDC}")
+            msg(f"{bcolors.OKBLUE}Thread - Connection Error{bcolors.ENDC}")
 
 
     def Run(self) -> list:

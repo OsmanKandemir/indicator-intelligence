@@ -20,7 +20,7 @@
 Indicator-Intelligence collects static files and related domains for target to do for threat intelligence.
 
 
-![](test.gif)
+![](https://beeimg.com/images/u99691383002.png)
 
 
 ## TODO
@@ -33,6 +33,8 @@ Indicator-Intelligence collects static files and related domains for target to d
 ## Installation
 
 ### From Source Code
+
+You can use virtualenv for package dependencies before installation.
 
 ```
 git clone https://github.com/OsmanKandemir/indicator-intelligence.git
