@@ -1,5 +1,5 @@
 
-![Logo](img.png)
+![Logo](imglogo.png)
 
 [![Indicator-Intelligence](https://img.shields.io/badge/Indicator-Intelligence-blue)](https://www.github.com/OsmanKandemir/indicator-intelligence)
 [![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/OsmanKandemir/indicator-intelligence)
@@ -20,7 +20,7 @@
 Indicator-Intelligence collects static files and related domains for target to do for threat intelligence.
 
 
-![](https://beeimg.com/images/u99691383002.png)
+![](imgtest.png)
 
 
 ## TODO
