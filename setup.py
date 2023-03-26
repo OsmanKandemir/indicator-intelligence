@@ -5,13 +5,15 @@ import os
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 VERSION = '1.0.1'
-DESCRIPTION = 'IndicatorIntelligence'
+DESCRIPTION = 'Indicator-Intelligence collects static files and related domains for target to do for threat intelligence.'
 # Setting up
 setup(
     name="indicator-intelligence",
     version=VERSION,
     author="OsmanKandemir",
     author_email="osmankandemir00@gmail.com",
+    license='GPL-3.0',
+    url='https://github.com/OsmanKandemir/indicator-intelligence',
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=open("README.md").read(),
@@ -49,18 +51,21 @@ setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Topic :: Software Development :: Build Tools",
         "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3 :: Only",
+        "Operating System :: OS Independent",
+        "Development Status :: 4 - Beta",
+        "Natural Language :: English",
         "Environment :: Console",
-        "Intended Audience :: Developers",
+        "Topic :: Security",
+        "Typing :: Typed",
+        "Intended Audience :: Telecommunications Industry",
+        'Intended Audience :: System Administrators',
         "Intended Audience :: Information Technology Specialists",
         "Intended Audience :: Cyber Security Engineers",
         "Intended Audience :: System Administrators",
         "Intended Audience :: SOC Specialists",
         "Intended Audience :: Cyber Security Specialists",
-        "Intended Audience :: Cyber Security Analysts",
-        "Topic :: Utilities",
-        "Typing :: Typed",
-        "Operating System :: OS Independent"
+        "Intended Audience :: Cyber Security Analysts"
+
 
     ],
     python_requires='>=3.9',

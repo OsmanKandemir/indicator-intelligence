@@ -60,7 +60,7 @@ Author : OsmanKandemir
 {bcolors.ENDC}""")
 
 
-class LinkExtractor():
+class LinkExtractor(object):
 
     def __init__(self,urls:list,worktime:str,proxy_server:str,agent:str,json:str):
         
@@ -102,7 +102,7 @@ class LinkExtractor():
                                 continue
                         else:
                             continue
-                    except:
+                    except Exception:
                         continue
                         
                 return list(set(AllUrls))
@@ -114,7 +114,7 @@ class LinkExtractor():
         except ConnectionError as Error:
             msg(f"{bcolors.OKBLUE}{Error.__class__.__name__}{bcolors.ENDC}")
             pass
-        except:
+        except Exception:
             pass
         
 
@@ -185,7 +185,7 @@ def Indicator(domains, proxy_server = None, agent = None, json = None):
     LinkExtractor(RegX(domains),work,proxy_server,agent,json).Run()
     try:
         return JsonRead(work)
-    except:
+    except Exception:
         return []
 
 
