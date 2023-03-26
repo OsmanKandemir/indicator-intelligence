@@ -19,6 +19,7 @@
 
 Indicator-Intelligence collects static files and related domains for target to do for threat intelligence.
 
+## ScreenShot
 
 ![](imgtest.png)
 
@@ -82,7 +83,7 @@ poetry install
 -o JSON, --json JSON  JSON output. --json
 ```
 
-#### Pypi
+#### Function Usage
 
 ```
 from indicator import Indicator
