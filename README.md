@@ -42,7 +42,7 @@ python setup.py install
 
 ### From Pypi
 
-The script is [available on PyPI](https://pypi.org/project/indicator-intelligence/). To install with pip:
+The script is [available on PyPI](https://pypi.org/project/IndicatorIntelligence/). To install with pip:
 ```
 pip install indicator-intelligence
 ```
