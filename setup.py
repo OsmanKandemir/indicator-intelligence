@@ -4,7 +4,7 @@ import os
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
-VERSION = '1.0.1'
+VERSION = '1.0'
 DESCRIPTION = 'Indicator-Intelligence finds related domains for target to do threat analysis.'
 # Setting up
 setup(
@@ -43,7 +43,6 @@ setup(
         "urlextract==1.8.0",
         "urllib3==1.26.14"
     ],
-    license="",
     keywords=['python', 'threat','threat-intelligence','intelligence','indicator'],
     classifiers=[
     
@@ -56,15 +55,9 @@ setup(
         "Environment :: Console",
         "Topic :: Security",
         "Typing :: Typed",
+        "Intended Audience :: Information Technology",
         "Intended Audience :: Telecommunications Industry",
-        'Intended Audience :: System Administrators',
-        "Intended Audience :: Information Technology Specialists",
-        "Intended Audience :: Cyber Security Engineers",
-        "Intended Audience :: System Administrators",
-        "Intended Audience :: SOC Specialists",
-        "Intended Audience :: Cyber Security Specialists",
-        "Intended Audience :: Cyber Security Analysts"
-
+        "Intended Audience :: System Administrators"
     ],
     python_requires='>=3.9',
 )
