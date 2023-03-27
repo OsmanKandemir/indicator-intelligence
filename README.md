@@ -44,7 +44,7 @@ python setup.py install
 
 The script is [available on PyPI](https://pypi.org/project/IndicatorIntelligence/). To install with pip:
 ```
-pip install indicator-intelligence
+pip install IndicatorIntelligence
 ```
 
 ### From Dockerfile
