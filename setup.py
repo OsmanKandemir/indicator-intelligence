@@ -4,7 +4,7 @@ import os
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
-VERSION = '1.1.0'
+VERSION = '1.1.1'
 DESCRIPTION = 'Indicator-Intelligence finds related domains for target to do threat analysis.'
 # Setting up
 setup(

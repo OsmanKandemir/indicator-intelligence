@@ -109,7 +109,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-indicator/indicatorP.py
 # Spyder project settings
 .spyderproject
 .spyproject
