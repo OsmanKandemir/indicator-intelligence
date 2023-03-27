@@ -4,10 +4,6 @@ from urlextract import URLExtract
 from multiprocessing import Pool
 import threading, queue
 
-PATH = os.path.abspath(os.path.dirname(__file__))
-
-sys.path.insert(1,PATH + "/indicator/")
-
 
 from bs4 import (
                 MarkupResemblesLocatorWarning,
@@ -52,7 +48,7 @@ print(f"""{bcolors.OKGREEN}
    | |  _ __   __| |_  ___ __ _| |_ ___  _ __    | |  _ __ | |_ ___| | |_  __ _  ___ _ __   ___ ___ 
    | | | '_ \ / _` | |/ __/ _` | __/ _ \| '__|   | | | '_ \| __/ _ \ | | |/ _` |/ _ \ '_ \ / __/ _ \\
   _| |_| | | | (_| | | (_| (_| | || (_) | |     _| |_| | | | ||  __/ | | | (_| |  __/ | | | (_|  __/
- |_____|_| |_|\__,_|_|\___\__,_|\__\___/|_|    |_____|_| |_|\__\___|_|_|_|\__, |\___|_| |_|\___\___| v0.1
+ |_____|_| |_|\__,_|_|\___\__,_|\__\___/|_|    |_____|_| |_|\__\___|_|_|_|\__, |\___|_| |_|\___\___| v1.1.0
                                                                            __/ |                    
                                                                           |___/                     
 Author : OsmanKandemir

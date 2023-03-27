@@ -2,7 +2,7 @@
 ![Logo](imglogo.png)
 
 [![Indicator-Intelligence](https://img.shields.io/badge/Indicator-Intelligence-blue)](https://www.github.com/OsmanKandemir/indicator-intelligence)
-[![Version](https://img.shields.io/badge/version-0.1-blue.svg)](https://github.com/OsmanKandemir/indicator-intelligence)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/OsmanKandemir/indicator-intelligence)
 [![Pip Version](https://img.shields.io/badge/pypi-23.0.1-green)](https://www.python.org)
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](https://raw.githubusercontent.com/smicallef/spiderfoot/master/LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.7+-green)](https://www.python.org)
@@ -42,9 +42,9 @@ python setup.py install
 
 ### From Pypi
 
-The script is [available on PyPI](https://pypi.org/project/IndicatorIntelligence/). To install with pip:
+The script is [available on PyPI](https://pypi.org/project/indicatorintelligence/). To install with pip:
 ```
-pip install IndicatorIntelligence
+pip install indicatorintelligence
 ```
 
 ### From Dockerfile
@@ -82,7 +82,7 @@ poetry install
 #### Function Usage
 
 ```
-from indicator import Indicator
+from indicator.indicator import Indicator
 
 #SCAN
 Indicator(["target-web.com"])
