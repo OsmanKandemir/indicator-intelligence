@@ -42,14 +42,14 @@ async def resolve_domain(resolver:aiodns.DNSResolver, domain:str, json:str) -> s
         return ""
 
 
-def Remove(worktime:str):
+def Remove(worktime:str) -> None:
     Path = PATH + "/"+ worktime+"_data.log"
     if os.path.isfile(Path):
         os.remove(Path)
     else:
         pass
 
-def SaveData(data:str,worktime:str):
+def SaveData(data:str,worktime:str) -> None:
     try: 
         with open(worktime + "_data.log","a+") as File:
             for domain in data:

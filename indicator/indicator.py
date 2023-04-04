@@ -41,6 +41,10 @@ warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
 
 
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
 print(f"""{bcolors.OKGREEN}
 
   _____           _ _           _               _____       _       _ _ _                           
@@ -70,7 +74,8 @@ class LinkExtractor(object):
     def Crawling(self,urls:str) -> list:
         extractor = URLExtract()
         try:
-            grab = requests.get(urls,proxies=self.proxy_server_,headers=self.agent_,timeout=(1,1))
+
+            grab = requests.get(urls,proxies=self.proxy_server_,headers=self.agent_,timeout=(5,5),verify=False)
             if grab.status_code == 200:
                 soup = BeautifulSoup(grab.content, 'html.parser',from_encoding="iso-8859-1")
                 AllUrls = []
@@ -102,7 +107,6 @@ class LinkExtractor(object):
                         continue
                         
                 return list(set(AllUrls))
-
             elif grab.status_code in [500,502,503,504]:
                 msg(f"{bcolors.OKBLUE}Connection Error{bcolors.ENDC}")
             else:
@@ -110,7 +114,7 @@ class LinkExtractor(object):
         except ConnectionError as Error:
             msg(f"{bcolors.OKBLUE}{Error.__class__.__name__}{bcolors.ENDC}")
             pass
-        except Exception:
+        except Exception as Error:
             pass
         
 
@@ -126,6 +130,7 @@ class LinkExtractor(object):
             results_queue.put(Tst)
         except Exception as Error:
             msg(f"{bcolors.OKBLUE}Thread - Connection Error{bcolors.ENDC}")
+
 
 
     def Run(self) -> list:

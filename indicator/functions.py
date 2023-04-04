@@ -61,7 +61,7 @@ def MultiProcessingTasks(urls:list) -> list:
     queue = []
     for i in urls:queue.append((i))
     with Pool() as pool:
-        L = pool.map(self.Test, queue)
+        L = pool.map(Test, queue)
     return L
 
 def RegX(urls:list) -> list:
@@ -73,7 +73,7 @@ def SpecialCharacters(url:str) -> bool:
         if one in url:return True
         else:return False
         
-def JsonSave(name:str,data):
+def JsonSave(name:str,data) -> None:
     with open(name if ".json" in name else name + ".json", "w+") as outfile:
         json.dump(data, outfile)
 

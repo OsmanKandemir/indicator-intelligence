@@ -10,7 +10,7 @@ BUF_SIZE = 60000
 
 
 class HashCalculator:
-    def __init__(self,Filenames:list):
+    def __init__(self,Filenames:list) -> None:
         self.Filenames_ = Filenames
 
 
