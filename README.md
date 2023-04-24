@@ -25,7 +25,7 @@ Indicator-Intelligence collects static files and related domains for target to d
 
 
 ## Done
-- [x] Releated domains collect
+- [x] Releated domains, IPs collect
 
 ## Installation
 
