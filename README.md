@@ -103,12 +103,11 @@ Licensed under the GPL-3.0 License.
 
 ## Donations
 
+If you like Indicator-Intelligence and would like to show support, you can use **Buy A Coffee** or **Github Sponsors** feature for the developer using the button below.
+
 You can use the github sponsored tiers feature for purchasing and other features.
 
 Sponsor me : https://github.com/sponsors/OsmanKandemir 😊
-
-
-If you like Indicator-Intelligence and would like to show support, you can Buy A Coffee for the developer using the button below
 
 <a href="https://www.buymeacoffee.com/OsmanKandemir" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
