@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "IndicatorIntelligence"
+version = "1.1.1"
+description = ""
+authors = ["Your Name <osmankandemir00@gmail.com>"]
+readme = "README.md"
+packages = [{include = "indicator"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+beautifulsoup4 = "4.11.2"
+certifi = "2022.12.7"
+charset-normalizer = "3.0.1"
+filelock = "3.9.0"
+idna = "3.4"
+platformdirs = "3.0.0"
+requests = "2.28.2"
+soupsieve = "2.4"
+uritools = "4.0.1"
+urlextract = "1.8.0"
+urllib3 = "1.26.14"
+aiodns = "3.0.0"
+build = "0.10.0"
+cffi = "1.15.1"
+dnspython = "1.15.0"
+packaging = "23.0"
+pycares = "4.3.0"
+pycparser = "2.21"
+pyproject-hooks = "1.0.0"
+requests-file = "1.5.1"
+six = "1.16.0"
+tldextract = "3.4.0"
+tomli = "2.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
