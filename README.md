@@ -18,7 +18,7 @@
 
 ## Description
 
-Indicator-Intelligence collects static files and related domains for target to do threat intelligence.
+Finds related domains and IPv4 addresses to do threat intelligence after Indicator-Intelligence collects static files.
 
 ## ScreenShot
 
@@ -26,7 +26,7 @@ Indicator-Intelligence collects static files and related domains for target to d
 
 
 ## Done
-- [x] Releated domains, IPs collect
+- [x] Related domains, IPs collect
 
 ## Installation
 
@@ -106,7 +106,7 @@ Licensed under the GPL-3.0 License.
 
 If you like Indicator-Intelligence and would like to show support, you can use **Buy A Coffee** or **Github Sponsors** feature for the developer using the button below.
 
-You can use the github sponsored tiers feature for purchasing and other features.
+You can see the monthly tier on Github Sponsors.
 
 Sponsor me : https://github.com/sponsors/OsmanKandemir 😊
 
