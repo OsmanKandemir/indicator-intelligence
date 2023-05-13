@@ -106,7 +106,7 @@ Licensed under the GPL-3.0 License.
 
 If you like Indicator-Intelligence and would like to show support, you can use **Buy A Coffee** or **Github Sponsors** feature for the developer using the button below.
 
-You can see the monthly tier on Github Sponsors.
+For more features, you can check out the monthly tier section of the Github Sponsor page.
 
 Sponsor me : https://github.com/sponsors/OsmanKandemir 😊
 
