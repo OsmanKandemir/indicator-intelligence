@@ -37,7 +37,7 @@ class bcolors:
         self.LOG = ''
         self.ENDC = ''
 
-def CheckHTTPS(url):
+def CheckHTTPS(url:str) -> str:
     try:
         hostname = url.split("//")[-1].split("/")[0]
         context = ssl.create_default_context()
@@ -46,7 +46,8 @@ def CheckHTTPS(url):
                 return "https://"
     except (socket.gaierror, ssl.SSLError, ConnectionRefusedError, socket.timeout):
         return "http://"
-
+    except:
+        return "http://"
 
 def Eliminate(value:str) -> bool:
     for i in SOCIAL_MEDIA_EXIST_OR_NOT_EXIST:
