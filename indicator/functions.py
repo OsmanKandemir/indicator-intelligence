@@ -1,6 +1,9 @@
 import re,json,os
 from multiprocessing import Pool
 import threading, queue
+import socket
+import ssl
+
 
 SOCIAL_MEDIA_EXIST_OR_NOT_EXIST = [
                 "facebook.com","twitter.com",
@@ -34,6 +37,17 @@ class bcolors:
         self.LOG = ''
         self.ENDC = ''
 
+def CheckHTTPS(url):
+    try:
+        hostname = url.split("//")[-1].split("/")[0]
+        context = ssl.create_default_context()
+        with socket.create_connection((hostname, 443), timeout=20) as sock:
+            with context.wrap_socket(sock, server_hostname=hostname) as ssock:
+                return "https://"
+    except (socket.gaierror, ssl.SSLError, ConnectionRefusedError, socket.timeout):
+        return "http://"
+
+
 def Eliminate(value:str) -> bool:
     for i in SOCIAL_MEDIA_EXIST_OR_NOT_EXIST:
         if i in value:return True
@@ -65,7 +79,7 @@ def MultiProcessingTasks(urls:list) -> list:
     return L
 
 def RegX(urls:list) -> list:
-    return ["http://"+re.sub(r"(https?:\/\/)?([w]{3}\.)?(\w*.\w*)([\/\w]*)", "\\3", i, 0, re.MULTILINE | re.IGNORECASE) for i in urls]
+    return list(set([CheckHTTPS(re.sub(r"(https?:\/\/)?([w]{3}\.)?(\w*.\w*)([\/\w]*)", "\\3", i, 0, re.MULTILINE | re.IGNORECASE)) + re.sub(r"(https?:\/\/)?([w]{3}\.)?(\w*.\w*)([\/\w]*)", "\\3", i, 0, re.MULTILINE | re.IGNORECASE)  for i in urls]))
 
 def SpecialCharacters(url:str) -> bool:
     lst = [","]

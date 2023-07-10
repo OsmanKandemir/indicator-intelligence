@@ -2,6 +2,7 @@
 ![Logo](imglogo.png)
 
 [![Indicator-Intelligence](https://img.shields.io/badge/Indicator-Intelligence-blue)](https://www.github.com/OsmanKandemir/indicator-intelligence)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/indicatorintelligence)
 [![Version](https://img.shields.io/badge/version-1.1.1-blue.svg)](https://github.com/OsmanKandemir/indicator-intelligence)
 [![Pip Version](https://img.shields.io/badge/pypi-23.0.1-green)](https://www.python.org)
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](https://raw.githubusercontent.com/smicallef/spiderfoot/master/LICENSE)

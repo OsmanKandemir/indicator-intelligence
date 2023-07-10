@@ -11,7 +11,7 @@ setup(
     name="IndicatorIntelligence",
     version=VERSION,
     author="OsmanKandemir",
-    author_email="osmankandemir00@gmail.com",
+    author_email="osmankandemir00[@]gmail[.]com",
     license='GPL-3.0',
     url='https://github.com/OsmanKandemir/indicator-intelligence',
     description=DESCRIPTION,
