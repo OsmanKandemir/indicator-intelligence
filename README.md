@@ -18,7 +18,7 @@
 
 ## Description
 
-Indicator-Intelligence collects static files and related domains for target to do threat intelligence.
+Finds related domains and IPv4 addresses to do threat intelligence after Indicator-Intelligence collects static files
 
 ## ScreenShot
 
