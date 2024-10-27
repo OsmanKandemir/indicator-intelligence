@@ -28,11 +28,7 @@ Finds related domains and IPv4 addresses to do threat intelligence after Indicat
 ## Done
 - [x] Releated domains, IPs collect.
 - [x] HTTP - HTTPS Check.
-
-## TODO List
-
- - [ ] Second-level or the more depth static files scanning for target web application.
-
+- [ ] Second-level or the more depth static files scanning for target web application.
 
 ## Installation
 
