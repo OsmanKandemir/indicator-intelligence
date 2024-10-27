@@ -31,7 +31,7 @@ Finds related domains and IPv4 addresses to do threat intelligence after Indicat
 
 ## TODO List
 
- - [ ] Third-level or the more depth static files scanning for target web application.
+ - [ ] Second-level or the more depth static files scanning for target web application.
 
 
 ## Installation
